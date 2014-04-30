@@ -18,6 +18,9 @@ https://github.com/sstephenson/rbenv
 
 	$ brew install rbenv ruby-build
 
+Ruby
+----
+
 	$ rbenv install -l
 	$ rbenv install 2.1.1
 
@@ -30,3 +33,11 @@ https://github.com/robbyrussell/oh-my-zsh
 
 	$ echo "export PATH='$HOME/.rbenv/bin:$PATH'" >> ~/.zshrc
 	$ echo "eval '$(rbenv init -)'' >> ~/.zshrc
+
+TMux
+----
+
+Download the tar.gz from http://tmux.sourceforge.net/
+
+	$ ./configure && make
+	$ sudo make install
