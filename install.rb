@@ -41,10 +41,20 @@ def validate_params(params, mandatory_params)
   end
 end
 
-execute do
-  Dir.foreach('./dotfiles/') do |file|
+def link_files(folder_from, folder_to)
+  call("mkdir -p #{folder_to}")
+  Dir.foreach("./#{folder_from}/") do |file|
     next if file == '.' or file == '..'
-    call("rm ~/#{file}")
-    call("ln -s #{Dir.pwd}/dotfiles/#{file} ~/#{file}")
+    link_file(folder_from, folder_to, file)
   end
+end
+
+def link_file(folder_from, folder_to, file)
+  call("rm #{folder_to}/#{file}")
+  call("ln -s #{Dir.pwd}/#{folder_from}/#{file} #{folder_to}/#{file}")
+end
+
+execute do
+  link_files('dotfiles', '~')
+  link_files('vim/plugin/settings', '~/.vim/plugin/settings')
 end
