@@ -14,6 +14,8 @@ See [gitignore dotfile](https://github.com/vnegrisolo/workstation/blob/master/do
 Brew
 ----
 
+Package manager for Mac.
+
 http://brew.sh/
 
     $ ruby -v
@@ -21,6 +23,8 @@ http://brew.sh/
 
 Rbenv
 ----
+
+Non intrusive ruby manager.
 
 https://github.com/sstephenson/rbenv
 
@@ -37,6 +41,8 @@ See [dotfile](https://github.com/vnegrisolo/workstation/blob/master/dotfiles/.ru
 Oh-My-Zsh
 ---------
 
+My favorite shell.
+
 https://github.com/robbyrussell/oh-my-zsh
 See [dotfile](https://github.com/vnegrisolo/workstation/blob/master/dotfiles/.zshrc).
 
@@ -48,6 +54,8 @@ See [dotfile](https://github.com/vnegrisolo/workstation/blob/master/dotfiles/.zs
 TMux
 ----
 
+Multi session terminal.
+
 See [cheatsheet](https://github.com/vnegrisolo/workstation/blob/master/cheatsheets/tmux.markdown).
 See [dotfile](https://github.com/vnegrisolo/workstation/blob/master/dotfiles/.tmux.conf).
 
@@ -56,5 +64,6 @@ See [dotfile](https://github.com/vnegrisolo/workstation/blob/master/dotfiles/.tm
 NeoBundle
 ---------
 
-    curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh | sh
+Package manager for vim plugins.
 
+    curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh | sh
