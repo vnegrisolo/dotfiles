@@ -3,14 +3,12 @@ if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
-set encoding=utf-8
-set termencoding=utf-8
-
 call neobundle#begin(expand('~/.vim/bundle/'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'kien/ctrlp.vim'
 
 call neobundle#end()
 
