@@ -15,15 +15,20 @@ list sessions:
 
     tmux ls
 
+connect in exiting session
+
+    tmux a -t my_session_name
+
+change the default ctrl+b to ctrl+z for the tmux commands (~/.tmux.conf)
+
+    unbind C-b
+    set -g prefix C-z
+
 ## Windows (tabs)
 
     c           new window
     ,           name window
     w           list windows
-    f           find window
-    &           kill window
-    .           move window - prompted for a new number
-    :movew<CR>  move window to the next unused number
 
 ## Panes (splits)
 
