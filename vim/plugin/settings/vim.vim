@@ -26,6 +26,7 @@ set ignorecase
 set smartcase
 set hlsearch
 set incsearch
+nmap <silent> // :nohlsearch<CR>
 
 " No vim swap or backup
 set noswapfile
