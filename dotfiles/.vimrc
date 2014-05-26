@@ -9,6 +9,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'plasticboy/vim-markdown'
 
 call neobundle#end()
 
