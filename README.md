@@ -11,35 +11,30 @@ The install ruby script will create some symbol links in your home directory.
 
     $ ruby bin/install.rb
 
-Git
----
+## Git
 
 You probably have already installed git. See [Git](http://git-scm.com/doc)
 
-Brew
-----
+## Brew
 
 Package manager for Mac. See [Brew](http://brew.sh/)
 
     $ ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 
-Rbenv
-----
+## Rbenv
 
 Non intrusive ruby manager. See [Rbenv](https://github.com/sstephenson/rbenv)
 
     $ brew install rbenv ruby-build
 
-Ruby
-----
+## Ruby
 
 Powerful language. See [Ruby](https://www.ruby-lang.org/en/).
 
     $ rbenv install -l
     $ rbenv install 2.1.1
 
-Oh-My-Zsh
----------
+## Oh-My-Zsh
 
 My favorite shell. See [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
 
@@ -47,15 +42,13 @@ My favorite shell. See [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
     $ echo "export PATH='$HOME/.rbenv/bin:$PATH'" >> ~/.zshrc
     $ echo "eval '$(rbenv init -)'' >> ~/.zshrc
 
-TMux
-----
+## TMux
 
 Multi session terminal. See [tmux](http://tmux.sourceforge.net/)
 
     $ brew install tmux
 
-NeoBundle
----------
+## NeoBundle
 
 Package manager for vim plugins. See [NeoBundle](https://github.com/Shougo/neobundle.vim)
 
