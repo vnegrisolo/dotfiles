@@ -56,3 +56,6 @@ source $ZSH/oh-my-zsh.sh
 export PATH=~/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 
 export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
+
+source ~/mvn-in-colors.zsh
+alias mvn="mvn-in-colors";

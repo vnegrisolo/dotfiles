@@ -26,7 +26,15 @@ class Install < Thor::Group
     end
   end
 
+  def link_scripts
+    if yes?('link all function files? [y|n]')
+      Dir.foreach("functions/") do |file|
+        next if file == '.' or file == '..'
+        link_file "../functions/#{file}", "~/#{file}"
+      end
+    end
+  end
+
 end
 
 Install.start
-
