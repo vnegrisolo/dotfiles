@@ -1,5 +1,10 @@
 syntax on
 
+" Solarized
+set background=dark
+let g:solarized_termtrans = 1
+colorscheme solarized
+
 " Just the encoding
 set encoding=utf-8
 set termencoding=utf-8
