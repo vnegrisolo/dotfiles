@@ -10,7 +10,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'plasticboy/vim-markdown'
-NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'altercation/solarized', { 'rtp': 'vim-colors-solarized' }
 
 call neobundle#end()
 
