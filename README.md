@@ -69,3 +69,9 @@ Package manager for vim plugins. See [NeoBundle](https://github.com/Shougo/neobu
 curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh | sh
 ```
 
+## Solarized colors in ITerm2
+
+1. Iterm2 -> Preferences -> Profile -> local -> load presets -> import
+2. load the 'Solarized Dark.itermcolors' or 'Solarized Light.itermcolors'
+3. Select one of them
+
