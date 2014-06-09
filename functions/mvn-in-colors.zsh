@@ -1,8 +1,12 @@
 mvn-in-colors() {
-  local color_red=$(tput bold)$(tput setaf 1);
-  local color_green=$(tput bold)$(tput setaf 2);
-  local color_yellow=$(tput bold)$(tput setaf 3);
-  local color_white=$(tput bold)$(tput setaf 7);
+  local color_black=$(tput setaf 1);
+  local color_red=$(tput setaf 1);
+  local color_green=$(tput setaf 2);
+  local color_yellow=$(tput setaf 3);
+  local color_blue=$(tput setaf 4);
+  local color_pink=$(tput setaf 5);
+  local color_cyan=$(tput setaf 6);
+  local color_white=$(tput setaf 7);
   local color_reset=$(tput sgr0);
 
   echo -ne ${color_reset}
@@ -12,7 +16,7 @@ mvn-in-colors() {
 
   (command mvn $@ ; echo $? > $tmp_file) | sed \
     -e "s/\(.*-\{55\}\+$\)/${color_white}\1${color_reset}/g" \
-    -e "s/\(.*\[INFO\] Scanning for projects.*\)/${color_white}\1${color_reset}/g" \
+    -e "s/\(.*\[INFO\] Scanning for projects.*\)/${color_cyan}\1${color_reset}/g" \
     -e "s/\(.*\[INFO\] Building.*\)/${color_white}\1${color_reset}/g" \
     -e "s/\(^Running .*\)/${color_white}\1${color_reset}/g" \
     -e "s/\(^ T E S T S$\)/${color_white}\1${color_reset}/g" \
