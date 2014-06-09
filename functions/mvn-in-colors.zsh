@@ -1,15 +1,7 @@
-mvn-in-colors() {
-  local color_black=$(tput setaf 1);
-  local color_red=$(tput setaf 1);
-  local color_green=$(tput setaf 2);
-  local color_yellow=$(tput setaf 3);
-  local color_blue=$(tput setaf 4);
-  local color_pink=$(tput setaf 5);
-  local color_cyan=$(tput setaf 6);
-  local color_white=$(tput setaf 7);
-  local color_reset=$(tput sgr0);
+source ~/colors.zsh;
 
-  echo -ne ${color_reset}
+mvn-in-colors() {
+  colors;
 
   rm -f /tmp/mvn-in-colors
   tmp_file=`mktemp /tmp/mvn-in-colors`
@@ -36,8 +28,8 @@ mvn-in-colors() {
 
   echo -ne ${color_reset}
 
-  read mvn_exit_code < $tmp_file
+  read exit_code < $tmp_file
   \rm -f $tmp_file
 
-  return $mvn_exit_code
+  return $exit_code
 }
