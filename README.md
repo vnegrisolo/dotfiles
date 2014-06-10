@@ -74,10 +74,13 @@ curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.s
 * See [Original Fonts](https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized)
 * See [My Fonts](https://github.com/vnegrisolo/workstation/tree/master/iterm2)
 
+Select the theme
+
 1. Iterm2 -> Preferences -> Profile -> Colors -> Load Presets -> Import...
 2. load the `Solarized Dark.itermcolors` or `Solarized Light.itermcolors`
 3. Select one of them
 
+Uncheck the bright on bold
 1. Iterm2 -> Preferences -> Profile -> Text
 2. uncheck `Draw bold text in bright colours`
 
