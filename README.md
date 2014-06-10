@@ -71,8 +71,8 @@ curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.s
 
 ## Solarized colors in ITerm2
 
-[Original Fonts](https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized)
-[My Fonts](https://github.com/vnegrisolo/workstation/tree/master/iterm2)
+* See [Original Fonts](https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized)
+* See [My Fonts](https://github.com/vnegrisolo/workstation/tree/master/iterm2)
 
 1. Iterm2 -> Preferences -> Profile -> Colors -> Load Presets -> Import...
 2. load the `Solarized Dark.itermcolors` or `Solarized Light.itermcolors`
