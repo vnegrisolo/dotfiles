@@ -1,5 +1,5 @@
 colors() {
-  color_black=$(tput setaf 1);
+  color_black=$(tput setaf 0);
   color_red=$(tput setaf 1);
   color_green=$(tput setaf 2);
   color_yellow=$(tput setaf 3);
