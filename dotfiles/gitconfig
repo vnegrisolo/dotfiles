@@ -4,7 +4,7 @@
 [github]
 	user = vnegrisolo
 [core]
-	excludesfile = /home/vnegrisolo/.gitignore
+	excludesfile = ~/.gitignore
 	mergeoptions = --no-ff
 [color]
 	diff = auto
