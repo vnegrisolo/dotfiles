@@ -81,6 +81,7 @@ Select the theme
 3. Select one of them
 
 Uncheck the bright on bold
+
 1. Iterm2 -> Preferences -> Profile -> Text
 2. uncheck `Draw bold text in bright colours`
 
