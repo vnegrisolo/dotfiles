@@ -72,7 +72,7 @@ curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.s
 ## Solarized colors in ITerm2
 
 1. Iterm2 -> Preferences -> Profile -> Colors -> Load Presets -> Import...
-2. load the 'Solarized Dark.itermcolors' or 'Solarized Light.itermcolors'
+2. load the `Solarized Dark.itermcolors` or `Solarized Light.itermcolors`
 3. Select one of them
 
 1. Iterm2 -> Preferences -> Profile -> Text
