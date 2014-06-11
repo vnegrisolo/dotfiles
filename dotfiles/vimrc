@@ -12,6 +12,7 @@ NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'plasticboy/vim-markdown'
 NeoBundle 'altercation/solarized', { 'rtp': 'vim-colors-solarized' }
 NeoBundle 'bling/vim-airline'
+NeoBundle 'tpope/vim-fugitive'
 
 call neobundle#end()
 
