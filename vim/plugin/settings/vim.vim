@@ -7,6 +7,9 @@ set termencoding=utf-8
 " Reload files edited outside the vim
 set autoread
 
+" vim act like other editors, buffers can exist in the background
+set hidden
+
 " Relative line numbers
 set relativenumber
 
