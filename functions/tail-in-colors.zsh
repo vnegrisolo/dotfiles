@@ -3,8 +3,9 @@ source ~/.functions/colors.zsh;
 tail-in-colors() {
   colors;
 
-  rm -f /tmp/tail-in-colors
-  tmp_file=`mktemp /tmp/tail-in-colors`
+  temp="/tmp/$0-`date +'%F-%T'`-${RANDOM}"
+  rm -f ${temp};
+  tmp_file=`mktemp ${temp}`;
 
   (command tail $@ ; echo $? > $tmp_file) | sed \
     -e "s/\(DEBUG\)/${color_cyan}\1${color_reset}/g" \
@@ -16,7 +17,8 @@ tail-in-colors() {
   echo -ne ${color_reset}
 
   read exit_code < $tmp_file
-  \rm -f $tmp_file
+
+  rm -f ${temp};
 
   return $exit_code
 }
