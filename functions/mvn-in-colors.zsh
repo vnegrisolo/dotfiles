@@ -1,4 +1,4 @@
-source ~/colors.zsh;
+source ~/.functions/colors.zsh;
 
 mvn-in-colors() {
   colors;

@@ -1,4 +1,4 @@
-source ~/colors.zsh;
+source ~/.functions/colors.zsh;
 
 tail-in-colors() {
   colors;

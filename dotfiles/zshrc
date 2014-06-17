@@ -57,7 +57,7 @@ export PATH=~/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 
 export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
 
-source ~/mvn-in-colors.zsh
+source ~/.functions/mvn-in-colors.zsh
 alias mvn="mvn-in-colors";
-source ~/tail-in-colors.zsh
+source ~/.functions/tail-in-colors.zsh
 alias tail="tail-in-colors";
