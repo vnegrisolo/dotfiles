@@ -12,26 +12,35 @@ class Install < Thor::Group
   end
 
   def link_dotfiles
-    return if no? 'link the dotfiles? [y|n]', :red
-    files_in("dotfiles/") do |file|
-      link_file "../dotfiles/#{file}", "~/.#{file}"
-    end
+    link_files 'dotfiles', '~/.'
   end
 
   def link_vim_plugins_conf
-    return if no? 'link the vim plugin conf files? [y|n]', :red
     empty_directory '~/.vim/plugin'
-    link_file '../vim/plugin/settings', '~/.vim/plugin/settings'
+    link_folder 'vim-settings', '~/.vim/plugin/settings'
   end
 
   def link_functions
-    return if no? 'link the function files? [y|n]', :red
-    files_in("functions/") do |file|
-      link_file "../functions/#{file}", "~/#{file}"
-    end
+    link_folder 'functions', '~/.functions'
   end
 
   private
+
+  def link_folder(folder, destination)
+    return if link? folder
+    link_file "../#{folder}", destination
+  end
+
+  def link_files(folder, destination)
+    return if link? folder
+    files_in("#{folder}/") do |file|
+      link_file "../#{folder}/#{file}", "#{destination}#{file}"
+    end
+  end
+
+  def link?(folder)
+    no? "link the #{folder} files? [y|n]", :red
+  end
 
   def files_in(folder)
     Dir.foreach(folder) do |file|
