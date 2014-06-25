@@ -1,0 +1,14 @@
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+  . /etc/bashrc
+fi
+
+alias l="ls -alFh";
+
+PATH=$HOME/.rbenv/shims:$PATH # Add rbenv to PATH
+
+source ~/.functions/mvn-in-colors.zsh
+alias mvn="mvn-in-colors";
+source ~/.functions/tail-in-colors.zsh
+alias tail="tail-in-colors";
