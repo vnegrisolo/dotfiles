@@ -59,5 +59,7 @@ export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
 
 source ~/.functions/mvn-in-colors.zsh
 alias mvn="mvn-in-colors";
+source ~/.functions/mvn-debug-in-colors.zsh
+alias mvnDebug="mvn-debug-in-colors";
 source ~/.functions/tail-in-colors.zsh
 alias tail="tail-in-colors";
