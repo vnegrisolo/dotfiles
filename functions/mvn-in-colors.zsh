@@ -7,7 +7,7 @@ mvn-in-colors() {
   rm -f ${temp};
   tmp_file=`mktemp ${temp}`;
 
-  (command mvn $@ ; echo $? > $tmp_file) | sed \
+  (command /opt/maven/bin/mvn $@ ; echo $? > $tmp_file) | sed \
     -e "s/\(.*-\{55\}\+$\)/${color_white}\1${color_reset}/g" \
     -e "s/\(.*\[INFO\] Scanning for projects.*\)/${color_cyan}\1${color_reset}/g" \
     -e "s/\(.*\[INFO\] Building.*\)/${color_white}\1${color_reset}/g" \
@@ -17,6 +17,7 @@ mvn-in-colors() {
     -e "s/\(^Tests run:.*Failures: 0.*Errors: 0.*Skipped: 0.*\)/${color_green}\1${color_reset}/g" \
     -e "s/\(.*\[INFO\] BUILD SUCCESS$\)/${color_green}\1${color_reset}/g" \
     -e "s/\(.*\[WARNING].*\)/${color_yellow}\1${color_reset}/g" \
+    -e "s/\(.*WARN.*\)/${color_yellow}\1${color_reset}/g" \
     -e "s/\(^NOTE: Maven is executing in offline mode\.\)/${color_yellow}\1${color_reset}/g" \
     -e "s/\(^Tests run:.*Failures: 0, Errors: 0, Skipped: [^0].*\)/${color_yellow}\1${color_reset}/g" \
     -e "s/\(.*\[ERROR\].*\)/${color_red}\1${color_reset}/g" \
