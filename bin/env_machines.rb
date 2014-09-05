@@ -13,26 +13,23 @@ class EnvMachines < Thor::Group
   end
 
   def copy_ssh_pub
-    return if no? "copy all the ssh pub? [y|n]", :red
+    return if no? "#{__method__}? [y|n]", :red
     machines(:dev, :qa) do |machine|
-      say "copy ssh pub to #{machine}", :blue
       system("ssh #{machine} 'echo #{config['ssh']['pub']} > teste.txt; mkdir ~/.ssh/; mv teste.txt ~/.ssh/authorized_keys'")
     end
   end
 
   def copy_functions
-    return if no? "copy all the functions? [y|n]", :red
+    return if no? "#{__method__}? [y|n]", :red
     machines(:dev, :qa) do |machine|
-      say "copy functions to #{machine}", :blue
       system("ssh #{machine} 'mkdir ~/.functions/'")
       system("scp functions/* #{machine}:~/.functions/")
     end
   end
 
   def copy_bashrc
-    return if no? "copy all the bashrc? [y|n]", :red
+    return if no? "#{__method__}? [y|n]", :red
     machines(:dev, :qa) do |machine|
-      say "copy bashrc to #{machine}", :blue
       system("scp dotfiles/bashrc #{machine}:~/.bashrc")
     end
   end
@@ -47,6 +44,7 @@ class EnvMachines < Thor::Group
     envs.each do |env|
       say "iterate over env #{env}", :yellow
       config['servers'][env.to_s].each do |machine|
+        say "machine = #{machine}", :blue
         yield machine[0]
       end
     end
