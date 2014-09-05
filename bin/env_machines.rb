@@ -34,6 +34,15 @@ class EnvMachines < Thor::Group
     end
   end
 
+  def command
+    return if no? "#{__method__}? [y|n]", :red
+    command = ask('Type a command:')
+    say "command = #{command}", :green
+    machines(:dev, :qa) do |machine|
+      system("ssh #{machine} '#{command}'")
+    end
+  end
+
   private
 
   def config
