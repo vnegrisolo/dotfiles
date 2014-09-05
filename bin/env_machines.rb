@@ -14,10 +14,9 @@ class EnvMachines < Thor::Group
 
   def copy_ssh_pub
     return if no? "copy all the ssh pub? [y|n]", :red
-    ssh_pub = config(:env_machines)['ssh']['pub']
     machines(:dev, :qa) do |machine|
       say "copy ssh pub to #{machine}", :blue
-      system("ssh #{machine} 'echo #{ssh_pub} > teste.txt; mkdir ~/.ssh/; mv teste.txt ~/.ssh/authorized_keys'")
+      system("ssh #{machine} 'echo #{config['ssh']['pub']} > teste.txt; mkdir ~/.ssh/; mv teste.txt ~/.ssh/authorized_keys'")
     end
   end
 
@@ -40,14 +39,14 @@ class EnvMachines < Thor::Group
 
   private
 
-  def config(conf)
-    YAML.load_file("config/#{conf}.yml")
+  def config
+    YAML.load_file('config/env_machines.yml')
   end
 
   def machines(*envs)
     envs.each do |env|
       say "iterate over env #{env}", :yellow
-      config(:env_machines)['servers'][env.to_s].each do |machine|
+      config['servers'][env.to_s].each do |machine|
         yield machine[0]
       end
     end
