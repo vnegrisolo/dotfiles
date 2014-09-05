@@ -26,9 +26,7 @@ class EnvMachines < Thor::Group
     machines(:dev, :qa) do |machine|
       say "copy functions to #{machine}", :blue
       system("ssh #{machine} 'mkdir ~/.functions/'")
-      files_in('functions') do |file|
-        system("scp functions/#{file} #{machine}:~/.functions/")
-      end
+      system("scp functions/* #{machine}:~/.functions/")
     end
   end
 
@@ -52,12 +50,6 @@ class EnvMachines < Thor::Group
       config(:env_machines)['servers'][env.to_s].each do |machine|
         yield machine[0]
       end
-    end
-  end
-
-  def files_in(folder)
-    Dir.foreach(folder) do |file|
-      yield file if file != '.' and file != '..'
     end
   end
 
