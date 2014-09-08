@@ -22,7 +22,7 @@ class EnvMachines < Thor::Group
   def copy_functions
     return if no? "#{__method__}? [y|n]", :red
     machines(:dev, :qa) do |machine|
-      system("ssh #{machine} 'mkdir ~/.functions/'")
+      system("ssh #{machine} 'rm -rf ~/.functions/; mkdir ~/.functions/'")
       system("scp functions/* #{machine}:~/.functions/")
     end
   end
@@ -30,6 +30,7 @@ class EnvMachines < Thor::Group
   def copy_bashrc
     return if no? "#{__method__}? [y|n]", :red
     machines(:dev, :qa) do |machine|
+      system("ssh #{machine} 'rm -f ~/.bashrc'")
       system("scp dotfiles/bashrc #{machine}:~/.bashrc")
     end
   end
