@@ -10,5 +10,7 @@ PATH=$HOME/.rbenv/shims:$PATH # Add rbenv to PATH
 
 source ~/.functions/mvn-in-colors.zsh
 alias mvn="mvn-in-colors";
+source ~/.functions/mvn-debug-in-colors.zsh
+alias mvnDebug="mvn-debug-in-colors";
 source ~/.functions/tail-in-colors.zsh
 alias tail="tail-in-colors";
