@@ -17,7 +17,11 @@ tail-in-colors() {
     -e "s/\(FATAL\)/${color_red}\1${color_reset}/g" \
     -e "s/\(fatal\)/${color_red}\1${color_reset}/g" \
     -e "s/\(ERROR\)/${color_red}\1${color_reset}/g" \
-    -e "s/\(error\)/${color_red}\1${color_reset}/g"
+    -e "s/\(Error\)/${color_red}\1${color_reset}/g" \
+    -e "s/\(error\)/${color_red}\1${color_reset}/g" \
+    -e "s/\(EXCEPTION\)/${color_red}\1${color_reset}/g" \
+    -e "s/\(Exception\)/${color_red}\1${color_reset}/g" \
+    -e "s/\(exception\)/${color_red}\1${color_reset}/g"
 
   echo -ne ${color_reset}
 
