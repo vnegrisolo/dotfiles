@@ -9,10 +9,15 @@ tail-in-colors() {
 
   (command tail $@ ; echo $? > $tmp_file) | sed \
     -e "s/\(DEBUG\)/${color_cyan}\1${color_reset}/g" \
+    -e "s/\(debug\)/${color_cyan}\1${color_reset}/g" \
     -e "s/\(INFO\)/${color_green}\1${color_reset}/g" \
+    -e "s/\(info\)/${color_green}\1${color_reset}/g" \
     -e "s/\(WARN\)/${color_yellow}\1${color_reset}/g" \
+    -e "s/\(warn\)/${color_yellow}\1${color_reset}/g" \
     -e "s/\(FATAL\)/${color_red}\1${color_reset}/g" \
-    -e "s/\(ERROR\)/${color_red}\1${color_reset}/g"
+    -e "s/\(fatal\)/${color_red}\1${color_reset}/g" \
+    -e "s/\(ERROR\)/${color_red}\1${color_reset}/g" \
+    -e "s/\(error\)/${color_red}\1${color_reset}/g"
 
   echo -ne ${color_reset}
 
