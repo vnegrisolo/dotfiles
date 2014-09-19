@@ -16,7 +16,6 @@ alias gb="git branch";
 alias gst="git stash";
 alias gsta="git stash apply";
 
-alias lll="ls -alFh";
 alias gitx="/Applications/GitX.app/Contents/MacOS/GitX .";
 
 # Set to this to use case-sensitive completion
@@ -57,9 +56,10 @@ export PATH=~/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 
 export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
 
-source ~/.functions/mvn-in-colors.zsh
-alias mvn="mvn-in-colors";
-source ~/.functions/mvn-debug-in-colors.zsh
-alias mvnDebug="mvn-debug-in-colors";
+source ~/.functions/colors.zsh;
 source ~/.functions/tail-in-colors.zsh
+source ~/.functions/mvn-in-colors.zsh
+
 alias tail="tail-in-colors";
+alias mvn="mvn-in-colors";
+alias mvnDebug="mvn-debug-in-colors";
