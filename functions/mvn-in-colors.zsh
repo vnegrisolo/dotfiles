@@ -1,4 +1,4 @@
-build_sed_command() {
+build_mvn_sed_command() {
   sed_command="sed";
   sed_replacement $color_white '.*-\{55\}\+$' '.*\[INFO\] Building.*' '^Running .*' '^ T E S T S$' '^Results.*';
   sed_replacement $color_cyan '.*\[INFO\] Scanning for projects.*';
@@ -11,7 +11,7 @@ mvn-in-colors() {
   temp="/tmp/$0-`date +'%F-%T'`-${RANDOM}";
   tmp_file=`mktemp ${temp}`;
 
-  build_sed_command;
+  build_mvn_sed_command;
 
   (command /opt/maven/bin/mvn $@ ; echo $? > $tmp_file) | eval $sed_command;
   read exit_code < $tmp_file
@@ -24,7 +24,7 @@ mvn-debug-in-colors() {
   temp="/tmp/$0-`date +'%F-%T'`-${RANDOM}";
   tmp_file=`mktemp ${temp}`;
 
-  build_sed_command;
+  build_mvn_sed_command;
 
   (command /opt/maven/bin/mvnDebug $@ ; echo $? > $tmp_file) | eval $sed_command;
   read exit_code < $tmp_file
