@@ -1,11 +1,12 @@
 build_tail_sed_command() {
   sed_command="sed";
   sed_replacement $color_cyan 'DEBUG' 'debug';
-  sed_replacement $color_green 'INFO' 'info';
+  sed_replacement $color_green 'INFO' 'info' 'SUCCESS' 'Success' 'success';
   sed_replacement $color_yellow 'WARN[ING]*' 'warn[ing]*';
   sed_replacement $color_red 'FATAL' 'fatal';
   sed_replacement $color_red 'ERROR' 'Error' 'error';
   sed_replacement $color_red 'EXCEPTION' 'Exception' 'exception';
+  sed_replacement $color_red 'FAIL[URE]*' 'Fail[ure]*' 'fail[ure]*';
 }
 
 tail-in-colors() {
