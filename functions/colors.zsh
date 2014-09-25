@@ -15,6 +15,6 @@ function colors_reset() {
 function sed_replacement() {
   local color=$1;
   for i in {2..$#@}; do;
-    sed_command="$sed_command -e \"s/\($@[$i]\)/${color}/g\"";
+    sed_command="$sed_command -e 's/\($@[$i]\)/${color}/g'";
   done
 }
