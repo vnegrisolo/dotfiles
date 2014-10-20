@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 require 'thor'
-require 'pry'
 
 class Install < Thor::Group
   include Thor::Actions

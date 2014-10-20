@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 require 'thor'
-require 'pry'
 require 'yaml'
 
 class EnvMachines < Thor::Group
