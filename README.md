@@ -3,24 +3,39 @@
 Personal Workstation - Get started in seconds!
 See [Wiki](https://github.com/vnegrisolo/workstation/wiki) for more info.
 
-## Install
+## Oh-My-Zsh
 
-The install ruby script will create some symbol links in your home directory.
+My favorite shell. See [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
 
 ```bash
-bin/install.rb
+curl -L http://install.ohmyz.sh | sh;
+```
+
+## Xcode (MAC)
+
+```bash
+xcode-select --install;
 ```
 
 ## Git
 
 You probably have already installed git. See [Git](http://git-scm.com/doc)
 
+```bash
+git --version;
+```
+
 ## Brew
 
 Package manager for Mac. See [Brew](http://brew.sh/)
 
 ```bash
-ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)";
+brew doctor;
+brew update;
+brew doctor;
+brew install openssl;
+brew link --force openssl;
 ```
 
 ## Rbenv
@@ -28,7 +43,9 @@ ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 Non intrusive ruby manager. See [Rbenv](https://github.com/sstephenson/rbenv)
 
 ```bash
-brew install rbenv ruby-build
+brew install rbenv ruby-build;
+echo "export PATH='$HOME/.rbenv/bin:$PATH'" >> ~/.zshrc;
+echo "eval '$(rbenv init -)'" >> ~/.zshrc;
 ```
 
 ## Ruby
@@ -36,21 +53,20 @@ brew install rbenv ruby-build
 Powerful language. See [Ruby](https://www.ruby-lang.org/en/).
 
 ```bash
-rbenv install -l
+rbenv install -l;
 ```
 
 ```bash
-rbenv install 2.1.1
+rbenv install 2.1.3;
 ```
 
-## Oh-My-Zsh
+## Install
 
-My favorite shell. See [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
+The install ruby script will create some symbol links in your home directory.
 
 ```bash
-curl -L http://install.ohmyz.sh | sh;
-echo "export PATH='$HOME/.rbenv/bin:$PATH'" >> ~/.zshrc;
-echo "eval '$(rbenv init -)'" >> ~/.zshrc;
+gem install thor;
+bin/install.rb;
 ```
 
 ## TMux
