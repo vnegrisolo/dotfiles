@@ -3,18 +3,18 @@
 Personal Workstation - Get started in seconds!
 See [Wiki](https://github.com/vnegrisolo/workstation/wiki) for more info.
 
+## Xcode (MAC)
+
+```bash
+xcode-select --install;
+```
+
 ## Oh-My-Zsh
 
 My favorite shell. See [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
 
 ```bash
 curl -L http://install.ohmyz.sh | sh;
-```
-
-## Xcode (MAC)
-
-```bash
-xcode-select --install;
 ```
 
 ## Git
@@ -33,7 +33,6 @@ Package manager for Mac. See [Brew](http://brew.sh/)
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)";
 brew doctor;
 brew update;
-brew doctor;
 brew install openssl;
 brew link --force openssl;
 ```
