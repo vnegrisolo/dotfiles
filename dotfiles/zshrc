@@ -12,11 +12,14 @@ ZSH_THEME="robbyrussell"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias openFileSystemToWeb='ifconfig | grep inet; python -m SimpleHTTPServer 8998;';
 alias gs="git status";
-alias gb="git branch";
-alias gst="git stash";
-alias gsta="git stash apply";
-
 alias gitx="/Applications/GitX.app/Contents/MacOS/GitX .";
+
+source ~/.functions/colors.zsh;
+source ~/.functions/tail-in-colors.zsh
+source ~/.functions/mvn-in-colors.zsh
+alias tail="tail-in-colors";
+alias mvn="mvn-in-colors";
+alias mvnDebug="mvn-debug-in-colors";
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -51,15 +54,4 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-# Customize to your needs...
-export PATH=~/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
-
-export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
-
-source ~/.functions/colors.zsh;
-source ~/.functions/tail-in-colors.zsh
-source ~/.functions/mvn-in-colors.zsh
-
-alias tail="tail-in-colors";
-alias mvn="mvn-in-colors";
-alias mvnDebug="mvn-debug-in-colors";
+eval "$(rbenv init -)"
