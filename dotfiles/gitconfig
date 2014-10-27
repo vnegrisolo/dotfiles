@@ -1,17 +1,16 @@
 [user]
-	name = Vinicius Ferreira Negrisolo
-	email = vinicius.negrisolo@gmail.com
+  name = Vinicius Ferreira Negrisolo
+  email = vinicius.negrisolo@gmail.com
 [github]
-	user = vnegrisolo
+  user = vnegrisolo
 [core]
-	excludesfile = ~/.gitignore
-	mergeoptions = --no-ff
+  excludesfile = ~/.gitignore
+  editor = vim
 [color]
-	diff = auto
-	status = auto
-	branch = auto
+  diff = auto
+  status = auto
+  branch = auto
 [alias]
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-
 [push]
-	default = simple
+  default = simple
