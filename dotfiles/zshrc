@@ -7,19 +7,9 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="robbyrussell"
 
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-alias openFileSystemToWeb='ifconfig | grep inet; python -m SimpleHTTPServer 8998;';
-alias gs="git status";
-alias gitx="/Applications/GitX.app/Contents/MacOS/GitX .";
-
-source ~/.functions/colors.zsh;
-source ~/.functions/tail-in-colors.zsh
-source ~/.functions/mvn-in-colors.zsh
-alias tail="tail-in-colors";
-alias mvn="mvn-in-colors";
-alias mvnDebug="mvn-debug-in-colors";
+if [ -f ~/.aliases ]; then
+  . ~/.aliases
+fi
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"

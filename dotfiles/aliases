@@ -1,0 +1,20 @@
+alias l='ls -lah';
+alias openFileSystemToWeb='ifconfig | grep 192.168; python -m SimpleHTTPServer 8998;';
+alias gs='git status';
+alias gitx='/Applications/GitX.app/Contents/MacOS/GitX .';
+
+source ~/.functions/colors.zsh;
+source ~/.functions/tail-in-colors.zsh
+source ~/.functions/mvn-in-colors.zsh
+alias tail='tail-in-colors';
+alias mvn='mvn-in-colors';
+alias mvnDebug='mvn-debug-in-colors';
+
+if [ -x /usr/bin/dircolors ]; then
+  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+  alias ls='ls --color=auto'
+
+  alias grep='grep --color=auto'
+  alias fgrep='fgrep --color=auto'
+  alias egrep='egrep --color=auto'
+fi
