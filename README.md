@@ -1,4 +1,4 @@
-# Workstation
+# Workstation [![Build Status](https://semaphoreapp.com/api/v1/projects/8d21f9f1-bbfb-4db1-be7d-87f08f615894/323974/badge.png)](https://semaphoreapp.com/vnegrisolo/workstation)
 ====================
 
 Personal Workstation - Get started very fast!
