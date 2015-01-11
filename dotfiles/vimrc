@@ -13,6 +13,7 @@ NeoBundle 'plasticboy/vim-markdown'
 NeoBundle 'altercation/solarized', { 'rtp': 'vim-colors-solarized' }
 NeoBundle 'bling/vim-airline'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'ngmy/vim-rubocop'
 
 call neobundle#end()
 
