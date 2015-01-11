@@ -14,7 +14,10 @@ class EnvMachines < Thor::Group
   def copy_ssh_pub
     return if no? "#{__method__}? [y|n]", :red
     machines(:dev, :qa) do |machine|
-      system("ssh #{machine} 'echo #{config['ssh']['pub']} > teste.txt; mkdir ~/.ssh/; mv teste.txt ~/.ssh/authorized_keys'")
+      pub = config['ssh']['pub']
+      cmd = "echo #{pub} > teste.txt; mkdir ~/.ssh/;"
+      cmd += ' mv teste.txt ~/.ssh/authorized_keys;'
+      system("ssh #{machine} '#{cmd}'")
     end
   end
 
@@ -58,7 +61,6 @@ class EnvMachines < Thor::Group
       end
     end
   end
-
 end
 
 EnvMachines.start

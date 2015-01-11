@@ -40,10 +40,9 @@ class Install < Thor::Group
 
   def files_in(folder)
     Dir.foreach(folder) do |file|
-      yield file if file != '.' and file != '..'
+      yield file if file != '.' && file != '..'
     end
   end
-
 end
 
 Install.start
