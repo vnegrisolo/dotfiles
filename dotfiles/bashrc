@@ -16,3 +16,6 @@ fi
 if [ -f ~/.environment-variables ]; then
   . ~/.environment-variables
 fi
+if [ -f ~/.environment-variables-private ]; then
+  . ~/.environment-variables-private
+fi
