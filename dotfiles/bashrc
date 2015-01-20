@@ -9,6 +9,6 @@ fi
 
 eval "$(rbenv init -)"
 
-if [ -f ~/.bash_prompt ]; then
-  . ~/.bash_prompt
+if [ -f ~/.bash-prompt ]; then
+  . ~/.bash-prompt
 fi
