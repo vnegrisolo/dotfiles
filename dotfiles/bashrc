@@ -12,3 +12,7 @@ eval "$(rbenv init -)"
 if [ -f ~/.bash-prompt ]; then
   . ~/.bash-prompt
 fi
+
+if [ -f ~/.environment-variables ]; then
+  . ~/.environment-variables
+fi
