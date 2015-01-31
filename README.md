@@ -88,12 +88,6 @@ Uncheck the bright on bold
 1. Iterm2 -> Preferences -> Profile -> Text
 2. uncheck `Draw bold text in bright colours`
 
-## TMux
-Multi session terminal. See [tmux](http://tmux.sourceforge.net/)
-```shell
-brew install tmux
-```
-
 ## Install Workstation
 The install ruby script will create some symbol links in your home directory.
 ```shell
@@ -232,41 +226,3 @@ enter in your project directory, open the vim with `vim .` and open the NERDTree
 
 * `Gstatus` - git status
 * `-` - add/reset file to stage
-
---------------------
-
-# Tmux Cheatsheet
-====================
-
-start new:
-
-```shell
-tmux
-```
-
-* `tmux new -s my_session_name` - start new with session name
-* `tmux ls` - list sessions
-* `tmux a` - connect to open tmux session
-* `tmux a -t my_session_name` - connect in exiting session
-* `tmux kill-session -t myname` - kill tmux session by name
-
-The tmux default prefix is `ctrl+b` but I've changed to `ctrl+z` in my ~/.tmux.conf.
-So, inside tmux, hit the prefix `ctrl+z` and then:
-
-## Windows (tabs)
-
-* `c` - new window
-* `,` - name window
-* `w` - list windows
-
-## Panes (splits)
-
-* `"` or `s` - horizontal split
-* `%` or `v` - vertical split
-* `o` - swap panes
-* `ctrl a` - broadcast panes
-* `z` - maximize pane
-* `q` - show pane numbers
-* `x` - kill pane
-* `<space>` - toggle between layouts
-* `?` - help
