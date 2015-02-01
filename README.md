@@ -2,6 +2,13 @@
 
 Personal Workstation - Get started very fast!
 
+# Documentation
+-------------------
+* [ruby](https://github.com/vnegrisolo/workstation/tree/master/docs/ruby.md)
+* [git](https://github.com/vnegrisolo/workstation/tree/master/docs/git.md)
+* [vim](https://github.com/vnegrisolo/workstation/tree/master/docs/vim.md)
+* [aws](https://github.com/vnegrisolo/workstation/tree/master/docs/aws.md)
+
 # Setup in Mac
 --------------------
 
@@ -89,10 +96,3 @@ The install ruby script will create some symbol links in your home directory.
 gem install thor;
 ./bin/install.rb;
 ```
-
-# Documentation
--------------------
-[ruby](https://github.com/vnegrisolo/docs/ruby.md)
-[git](https://github.com/vnegrisolo/docs/git.md)
-[vim](https://github.com/vnegrisolo/docs/vim.md)
-[aws](https://github.com/vnegrisolo/docs/aws.md)
