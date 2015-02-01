@@ -4,18 +4,12 @@ require 'yaml'
 module Workstation
   include Thor::Actions
 
+  def self.source_root
+    File.expand_path('..', File.dirname(__FILE__))
+  end
+
   def run?(method)
     yes? "#{method}? [y|n]", :red
-  end
-
-  def link_folder(folder, destination)
-    link_file "../#{folder}", destination
-  end
-
-  def link_files(folder, destination)
-    files_in("#{folder}/") do |file|
-      link_file "../#{folder}/#{file}", "#{destination}#{file}"
-    end
   end
 
   def files_in(folder)
@@ -42,11 +36,11 @@ module Workstation
     system_command "ssh #{machine} '#{command}'"
   end
 
-  def scp_from(machine, remote, local = '.')
+  def scp_from(machine, local = '.', remote = '~/*')
     system_command "scp #{machine}:#{remote} #{local}"
   end
 
-  def scp_to(machine, local, remote = '~/.')
+  def scp_to(machine, local = '*', remote = '~/.')
     system_command "scp #{local} #{machine}:#{remote}"
   end
 

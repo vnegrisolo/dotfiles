@@ -2,27 +2,44 @@
 require 'thor'
 require_relative 'workstation'
 
-module Workstation
-  class Install < Thor::Group
-    include Workstation
+class Install < Thor::Group
+  include Thor::Actions
+  include Workstation
 
-    desc 'install the workstation'
+  desc 'install the workstation'
 
-    def self.source_root
-      File.dirname(__FILE__)
+  def self.source_root
+    File.expand_path('..', File.dirname(__FILE__))
+  end
+
+  def install
+    install_dot_files if run? 'dot files'
+    install_vim_files if run? 'vim files'
+    install_functions if run? 'functions'
+    install_secrets if run? 'secrets'
+  end
+
+  private
+
+  def install_dot_files
+    files_in('dotfiles/') do |file|
+      link_file "dotfiles/#{file}", "~/.#{file}"
     end
+  end
 
-    def install
-      link_files 'dotfiles', '~/.' if run? 'dotfiles'
+  def install_vim_files
+    empty_directory '~/.vim/plugin'
+    link_file 'vim-settings', '~/.vim/plugin/settings'
+  end
 
-      if run? 'vim plugins'
-        empty_directory '~/.vim/plugin'
-        link_folder 'vim-settings', '~/.vim/plugin/settings'
-      end
+  def install_functions
+    link_file 'functions', '~/.functions'
+  end
 
-      link_folder 'functions', '~/.functions' if run? 'functions'
-    end
+  def install_secrets
+    @secrets = config['secrets']
+    template('templates/secrets.erb', '~/.env-vars.secrets')
   end
 end
 
-Workstation::Install.start
+Install.start

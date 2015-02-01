@@ -48,9 +48,9 @@ eval "$(rbenv init -)"
 
 unsetopt AUTO_CD;
 
-if [ -f ~/.environment-variables ]; then
-  . ~/.environment-variables
+if [ -f ~/.env-vars ]; then
+  . ~/.env-vars
 fi
-if [ -f ~/.environment-variables-private ]; then
-  . ~/.environment-variables-private
+if [ -f ~/.env-vars.secrets ]; then
+  . ~/.env-vars.secrets
 fi
