@@ -1,47 +1,44 @@
 #!/usr/bin/env ruby
 require 'thor'
+require_relative 'workstation'
 
 class Install < Thor::Group
   include Thor::Actions
+  include Workstation
 
   desc 'install the workstation'
 
   def self.source_root
-    File.dirname(__FILE__)
+    File.expand_path('..', File.dirname(__FILE__))
   end
 
-  def link_dotfiles
-    return if no? "#{__method__}? [y|n]", :red
-    link_files 'dotfiles', '~/.'
-  end
-
-  def link_vim_plugins_conf
-    return if no? "#{__method__}? [y|n]", :red
-    empty_directory '~/.vim/plugin'
-    link_folder 'vim-settings', '~/.vim/plugin/settings'
-  end
-
-  def link_functions
-    return if no? "#{__method__}? [y|n]", :red
-    link_folder 'functions', '~/.functions'
+  def install
+    install_dot_files if run? 'dot files'
+    install_vim_files if run? 'vim files'
+    install_functions if run? 'functions'
+    install_secrets if run? 'secrets'
   end
 
   private
 
-  def link_folder(folder, destination)
-    link_file "../#{folder}", destination
-  end
-
-  def link_files(folder, destination)
-    files_in("#{folder}/") do |file|
-      link_file "../#{folder}/#{file}", "#{destination}#{file}"
+  def install_dot_files
+    files_in('dotfiles/') do |file|
+      link_file "dotfiles/#{file}", "~/.#{file}"
     end
   end
 
-  def files_in(folder)
-    Dir.foreach(folder) do |file|
-      yield file if file != '.' && file != '..'
-    end
+  def install_vim_files
+    empty_directory '~/.vim/plugin'
+    link_file 'vim-settings', '~/.vim/plugin/settings'
+  end
+
+  def install_functions
+    link_file 'functions', '~/.functions'
+  end
+
+  def install_secrets
+    @secrets = config['secrets']
+    template('templates/secrets.erb', '~/.env-vars.secrets')
   end
 end
 
