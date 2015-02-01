@@ -1,5 +1,4 @@
 # AWS Cheatsheet
---------------------
 
 Sign up in AWS Console
 
