@@ -10,6 +10,7 @@
 * `git pull origin master`
 * `git push origin master`
 * `git pull --rebase origin master`
+* `git pull --rebase; bundle; git fetch; git remote prune origin; git branch --merged master`
 * `git merge featured_branch`
 * `git diff`
 * `git commit -m 'commit message'`
