@@ -1,5 +1,4 @@
 # Git Cheatsheet
---------------------
 
 * `git status`
 * `git branch`

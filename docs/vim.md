@@ -1,5 +1,4 @@
 # Vim Cheatsheet
---------------------
 
 enter in your project directory, open the vim with `vim .` and open the NERDTree `,n`
 

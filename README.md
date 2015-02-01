@@ -3,14 +3,13 @@
 Personal Workstation - Get started very fast!
 
 # Documentation
--------------------
+
 * [ruby](https://github.com/vnegrisolo/workstation/tree/master/docs/ruby.md)
 * [git](https://github.com/vnegrisolo/workstation/tree/master/docs/git.md)
 * [vim](https://github.com/vnegrisolo/workstation/tree/master/docs/vim.md)
 * [aws](https://github.com/vnegrisolo/workstation/tree/master/docs/aws.md)
 
 # Setup in Mac
---------------------
 
 ## System Updates
 Go to the `Apple menu` -> `Software Update` -> `Update All`

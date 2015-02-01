@@ -1,5 +1,4 @@
 # Ruby Cheatsheet
---------------------
 
 ## Ruby
 
