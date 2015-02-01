@@ -1,12 +1,9 @@
 # Workstation [![Build Status](https://semaphoreapp.com/api/v1/projects/8d21f9f1-bbfb-4db1-be7d-87f08f615894/323974/badge.png)](https://semaphoreapp.com/vnegrisolo/workstation)
-====================
 
 Personal Workstation - Get started very fast!
 
---------------------
-
 # Setup in Mac
-====================
+--------------------
 
 ## System Updates
 Go to the `Apple menu` -> `Software Update` -> `Update All`
@@ -15,9 +12,6 @@ Go to the `Apple menu` -> `Software Update` -> `Update All`
 ```shell
 xcode-select --install;
 ```
-
-## Nice Programs
-Adium, Skype, Chrome, Firefox, iTerm2, Sublime3, DiffMerge, Gitx, Squirrel, Mou
 
 ## Oh-My-Zsh
 My shell. See [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
@@ -31,6 +25,7 @@ ssh-keygen -t rsa -C "your@email.com";
 eval "$(ssh-agent -s)";
 ssh-add ~/.ssh/id_rsa;
 pbcopy < ~/.ssh/id_rsa.pub;
+# paste in github settings
 ssh -T git@github.com;
 ```
 
@@ -92,63 +87,7 @@ Uncheck the bright on bold
 The install ruby script will create some symbol links in your home directory.
 ```shell
 gem install thor;
-bin/install.rb;
-```
-
---------------------
-
-# Ruby Cheatsheet
-====================
-
-## Ruby
-
-* `irb` - starts ruby console
-
-## Rails
-
-* `rails new my_rails_app` - create your rails app
-* `rails s` - starts your rails app
-* `rails c` - starts your rails console
-* `rake` - run tests
-
-## Gems
-
-* `bundle gem my_gem` - create your gem
-* `rake install` - install your gem
-
---------------------
-
-# Git Cheatsheet
-====================
-
-* `git status`
-* `git branch`
-* `git branch -a` - all branches including remotes
-* `git remote prune origin` - remove remote references to deleted branches
-* `git branch --merged master` - list local branches merged with master
-* `git remote -v` - remote information
-* `git pull origin master`
-* `git push origin master`
-* `git pull --rebase origin master`
-* `git merge featured_branch`
-* `git diff`
-* `git commit -m 'commit message'`
-* `git commit -am 'commit message'` - commits all tracked files
-* `git branch featured_branch`
-* `git checkout featured_branch`
-* `git checkout -b featured_branch`
-* `git branch -d featured_branch`
-* `git push origin :featured_branch`
-* `git submodule init`
-* `git submodule update`
-* `git bisect start; git bisect bad; git bisect good <rev>` - so you start test and say if its bad or good
-* `git bisect visualize`
-
-If you want to create a git hook to forbide the commits in master branch copy the `config/pre-commit.sh` file to the project and run:
-
-```shell
-mkdir -p .git/hooks;
-ln -s ../../pre-commit.sh .git/hooks/pre-commit;
+./bin/install.rb;
 ```
 
 # Documentation
