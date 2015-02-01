@@ -1,48 +1,28 @@
 #!/usr/bin/env ruby
 require 'thor'
+require_relative 'workstation'
 
-class Install < Thor::Group
-  include Thor::Actions
+module Workstation
+  class Install < Thor::Group
+    include Workstation
 
-  desc 'install the workstation'
+    desc 'install the workstation'
 
-  def self.source_root
-    File.dirname(__FILE__)
-  end
-
-  def link_dotfiles
-    return if no? "#{__method__}? [y|n]", :red
-    link_files 'dotfiles', '~/.'
-  end
-
-  def link_vim_plugins_conf
-    return if no? "#{__method__}? [y|n]", :red
-    empty_directory '~/.vim/plugin'
-    link_folder 'vim-settings', '~/.vim/plugin/settings'
-  end
-
-  def link_functions
-    return if no? "#{__method__}? [y|n]", :red
-    link_folder 'functions', '~/.functions'
-  end
-
-  private
-
-  def link_folder(folder, destination)
-    link_file "../#{folder}", destination
-  end
-
-  def link_files(folder, destination)
-    files_in("#{folder}/") do |file|
-      link_file "../#{folder}/#{file}", "#{destination}#{file}"
+    def self.source_root
+      File.dirname(__FILE__)
     end
-  end
 
-  def files_in(folder)
-    Dir.foreach(folder) do |file|
-      yield file if file != '.' && file != '..'
+    def install
+      link_files 'dotfiles', '~/.' if run? 'dotfiles'
+
+      if run? 'vim plugins'
+        empty_directory '~/.vim/plugin'
+        link_folder 'vim-settings', '~/.vim/plugin/settings'
+      end
+
+      link_folder 'functions', '~/.functions' if run? 'functions'
     end
   end
 end
 
-Install.start
+Workstation::Install.start

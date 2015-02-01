@@ -1,9 +1,5 @@
 ssh:
   pub: 'ssh-rsa myrsakey'
 servers:
-  dev:
-    machine-1: 'my machine 1'
-  qa:
-    machine-1: 'my machine 1'
   prod:
     machine-1: 'my machine 1'
