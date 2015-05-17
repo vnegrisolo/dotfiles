@@ -1,13 +1,13 @@
-# Workstation [![Build Status](https://semaphoreapp.com/api/v1/projects/8d21f9f1-bbfb-4db1-be7d-87f08f615894/323974/badge.png)](https://semaphoreapp.com/vnegrisolo/workstation)
+# Dotfiles [![Build Status](https://semaphoreci.com/api/v1/projects/d9b9a8d5-9400-4be0-819b-42b24066a32e/426372/badge.svg)](https://semaphoreci.com/vnegrisolo/dotfiles)
 
-Personal Workstation - Get started very fast!
+Personal Dotfiles - Get started very fast!
 
 # Documentation
 
-* [ruby](https://github.com/vnegrisolo/workstation/tree/master/docs/ruby.md)
-* [git](https://github.com/vnegrisolo/workstation/tree/master/docs/git.md)
-* [vim](https://github.com/vnegrisolo/workstation/tree/master/docs/vim.md)
-* [aws](https://github.com/vnegrisolo/workstation/tree/master/docs/aws.md)
+* [ruby](https://github.com/vnegrisolo/dotfiles/tree/master/docs/ruby.md)
+* [git](https://github.com/vnegrisolo/dotfiles/tree/master/docs/git.md)
+* [vim](https://github.com/vnegrisolo/dotfiles/tree/master/docs/vim.md)
+* [aws](https://github.com/vnegrisolo/dotfiles/tree/master/docs/aws.md)
 
 # Setup in Mac
 
@@ -76,7 +76,7 @@ curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.s
 
 ## Solarized colors in ITerm2
 * See [Original Fonts](https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized)
-* See [My Fonts](https://github.com/vnegrisolo/workstation/tree/master/iterm2)
+* See [My Fonts](https://github.com/vnegrisolo/dotfiles/tree/master/iterm2)
 
 Select the theme
 
@@ -89,7 +89,7 @@ Uncheck the bright on bold
 1. Iterm2 -> Preferences -> Profile -> Text
 2. uncheck `Draw bold text in bright colours`
 
-## Install Workstation
+## Install Dotfiles
 The install ruby script will create some symbol links in your home directory.
 ```shell
 bundle install;

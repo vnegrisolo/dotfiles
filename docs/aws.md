@@ -11,8 +11,8 @@ The basics:
 sudo yum clean all;
 sudo yum update;
 sudo yum install git;
-git clone https://github.com/vnegrisolo/workstation.git;
-cd workstation;
+git clone https://github.com/vnegrisolo/dotfiles.git;
+cd dotfiles;
 gem install bundle;
 ```
 
