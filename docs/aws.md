@@ -8,7 +8,12 @@ Launch a new instance: `Amazon Linux AMI 2014.09.2 (HVM)`
 
 The basics:
 ```shell
+sudo yum clean all;
+sudo yum update;
 sudo yum install git;
+git clone https://github.com/vnegrisolo/workstation.git;
+cd workstation;
+gem install bundle;
 ```
 
 ## EC2 SSH
