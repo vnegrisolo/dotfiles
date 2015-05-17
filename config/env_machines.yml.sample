@@ -1,9 +1,0 @@
-ssh:
-  pub: 'ssh-rsa myrsakey'
-servers:
-  prod:
-    machine-1: 'my machine 1'
-secrets:
-  aws:
-    access_key: 'my access'
-    secret_key: 'my key'
