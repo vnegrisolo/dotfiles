@@ -15,7 +15,6 @@ class Install < Thor::Group
   def install
     install_dot_files if run? 'dot files'
     install_vim_files if run? 'vim files'
-    install_functions if run? 'functions'
     install_secrets if run? 'secrets'
   end
 
@@ -30,10 +29,6 @@ class Install < Thor::Group
   def install_vim_files
     empty_directory '~/.vim/plugin'
     link_file 'vim-settings', '~/.vim/plugin/settings'
-  end
-
-  def install_functions
-    link_file 'functions', '~/.functions'
   end
 
   def install_secrets
