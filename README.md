@@ -92,6 +92,6 @@ Uncheck the bright on bold
 ## Install Workstation
 The install ruby script will create some symbol links in your home directory.
 ```shell
-gem install thor;
+bundle install;
 ./bin/install.rb;
 ```
