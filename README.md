@@ -1,4 +1,6 @@
-# Dotfiles [![Build Status](https://semaphoreci.com/api/v1/projects/d9b9a8d5-9400-4be0-819b-42b24066a32e/426372/badge.svg)](https://semaphoreci.com/vnegrisolo/dotfiles)
+# Dotfiles
+[![Build Status](https://travis-ci.org/vnegrisolo/dotfiles.svg)](https://travis-ci.org/vnegrisolo/dotfiles)
+[![Code Climate](https://codeclimate.com/github/vnegrisolo/dotfiles/badges/gpa.svg)](https://codeclimate.com/github/vnegrisolo/dotfiles)
 
 Personal Dotfiles - Get started very fast!
 
