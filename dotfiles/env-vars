@@ -7,7 +7,7 @@ export LC_NUMERIC="en_US.UTF-8";
 export LC_TIME="en_US.UTF-8";
 export LC_ALL="";
 
-export JAVA_HOME=$(/usr/libexec/java_home);
+# export JAVA_HOME=$(/usr/libexec/java_home);
 
 export EC2_HOME=/usr/local/ec2/ec2-api-tools-1.7.3.0;
 export PATH=$PATH:$EC2_HOME/bin;
