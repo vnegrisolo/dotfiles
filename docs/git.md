@@ -23,10 +23,3 @@
 * `git submodule update`
 * `git bisect start; git bisect bad; git bisect good <rev>` - so you start test and say if its bad or good
 * `git bisect visualize`
-
-If you want to create a git hook to forbide the commits in master branch copy the `config/pre-commit.sh` file to the project and run:
-
-```shell
-mkdir -p .git/hooks;
-ln -s ../../pre-commit.sh .git/hooks/pre-commit;
-```
