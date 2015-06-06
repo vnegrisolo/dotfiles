@@ -3,19 +3,9 @@ if [ -f /etc/bashrc ]; then
   . /etc/bashrc
 fi
 
-if [ -f ~/.aliases ]; then
-  . ~/.aliases
-fi
-
 eval "$(rbenv init -)"
 
-if [ -f ~/.bash-prompt ]; then
-  . ~/.bash-prompt
-fi
-
-if [ -f ~/.env-vars ]; then
-  . ~/.env-vars
-fi
-if [ -f ~/.env-vars.secrets ]; then
-  . ~/.env-vars.secrets
-fi
+dotfiles=(aliases bash-prompt env-vars aws)
+for file in $dotfiles; do
+  source ~/.$file
+done

@@ -18,15 +18,15 @@ class Install < Thor::Group
     empty_directory '~/.vim/plugin'
     link_file 'vim-settings', '~/.vim/plugin/settings'
 
-    template('templates/secrets.erb', '~/.env-vars.secrets', skip: true)
+    files_in('templates/') do |file|
+      template "templates/#{file}", "~/.#{file.gsub(/\.erb/, '')}", skip: true
+    end
   end
 
   private
 
   def files_in(folder)
-    Dir.foreach(folder) do |file|
-      yield file if file != '.' && file != '..'
-    end
+    Dir.foreach(folder) { |file| yield file if file != '.' && file != '..' }
   end
 end
 

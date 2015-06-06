@@ -1,8 +1,9 @@
 alias l='ls -lah';
 alias openFileSystemToWeb='ifconfig | grep 192.168; python -m SimpleHTTPServer 8998;';
 alias gs='git status';
-alias gitx='/Applications/GitX.app/Contents/MacOS/GitX .';
 alias be='bundle exec';
+
+alias gitx='/Applications/GitX.app/Contents/MacOS/GitX .';
 
 if [ -x /usr/bin/dircolors ]; then
   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"

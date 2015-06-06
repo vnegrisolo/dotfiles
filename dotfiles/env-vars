@@ -7,12 +7,6 @@ export LC_NUMERIC="en_US.UTF-8";
 export LC_TIME="en_US.UTF-8";
 export LC_ALL="";
 
-# export JAVA_HOME=$(/usr/libexec/java_home);
-
-export EC2_HOME=/usr/local/ec2/ec2-api-tools-1.7.3.0;
-export PATH=$PATH:$EC2_HOME/bin;
-
-export EC2_URL=ec2.sa-east-1.amazonaws.com;
-export AWS_REGION=sa-east-1
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home
 
 export PATH=$HOME/.chefdk/gem/ruby/2.1.0/bin:/opt/chefdk/bin:$PATH
