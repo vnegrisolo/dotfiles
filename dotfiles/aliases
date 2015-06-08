@@ -3,6 +3,10 @@ alias openFileSystemToWeb='ifconfig | grep 192.168; python -m SimpleHTTPServer 8
 alias gs='git status';
 alias be='bundle exec';
 
+source ~/.functions/colors.zsh;
+source ~/.functions/tail-in-colors.zsh;
+alias tail='tail-in-colors';
+
 alias gitx='/Applications/GitX.app/Contents/MacOS/GitX .';
 
 if [ -x /usr/bin/dircolors ]; then

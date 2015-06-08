@@ -21,6 +21,8 @@ class Install < Thor::Group
     files_in('templates/') do |file|
       template "templates/#{file}", "~/.#{file.gsub(/\.erb/, '')}", skip: true
     end
+
+    link_file 'functions', '~/.functions'
   end
 
   private
