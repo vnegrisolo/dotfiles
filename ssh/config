@@ -1,0 +1,2 @@
+Host *.compute.amazonaws.com
+  User ubuntu

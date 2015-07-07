@@ -9,7 +9,6 @@ class Install < Thor::Group
   end
 
   desc 'install dotfiles'
-
   def install
     files_in('dotfiles/') do |file|
       link_file "dotfiles/#{file}", "~/.#{file}", force: true
@@ -23,6 +22,7 @@ class Install < Thor::Group
     end
 
     link_file 'functions', '~/.functions'
+    link_file 'ssh/config', '~/.ssh/config'
   end
 
   private
