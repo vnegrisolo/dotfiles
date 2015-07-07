@@ -2,6 +2,7 @@ alias l='ls -lah';
 alias openFileSystemToWeb='ifconfig | grep 192.168; python -m SimpleHTTPServer 8998;';
 alias gs='git status';
 alias be='bundle exec';
+alias berm='be rake db:migrate && be rake db:rollback && be rake db:migrate && be rake db:test:prepare'
 
 source ~/.functions/colors.zsh;
 source ~/.functions/tail-in-colors.zsh;
