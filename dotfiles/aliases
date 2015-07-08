@@ -1,9 +1,15 @@
 alias l='ls -lah';
-alias openFileSystemToWeb='ifconfig | grep 192.168; python -m SimpleHTTPServer 8998;';
+alias open_file_system_to_web='ifconfig | grep 192.168; python -m SimpleHTTPServer 8998;';
 alias gs='git status';
+
 alias be='bundle exec';
-alias berm='be rake db:migrate && be rake db:rollback && be rake db:migrate && be rake db:test:prepare'
+alias berm="echo '#=> run 1st migration'; be rake db:migrate && echo '#=> run rollback'; be rake db:rollback && echo '#=> run 2nd migration'; be rake db:migrate && echo '#=> run test prepare'; be rake db:test:prepare";
 alias ec2s='for s in staging production; do echo $s; be cap $s ec2:status; done;'
+
+alias rubocop_diff="echo '#=> run Rubocop on diff'; git diff --name-only | grep .rb | xargs --no-run-if-empty bundle exec rubocop";
+alias haml_diff="echo '#=> run Haml on diff'; git diff --name-only | grep .haml | xargs --no-run-if-empty bundle exec haml-lint";
+alias rspec_diff="echo '#=> run RSpec on diff'; git diff --name-only | grep .rb | sed 's/app\//spec\//g' | sed 's/\.rb/_spec\.rb/g' | sed 's/_spec_spec/_spec/g' | sort -u | xargs --no-run-if-empty bundle exec rspec";
+alias rake_diff='rubocop_diff; haml_diff; rspec_diff';
 
 source ~/.functions/colors.zsh;
 source ~/.functions/tail-in-colors.zsh;
