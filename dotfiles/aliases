@@ -3,6 +3,7 @@ alias openFileSystemToWeb='ifconfig | grep 192.168; python -m SimpleHTTPServer 8
 alias gs='git status';
 alias be='bundle exec';
 alias berm='be rake db:migrate && be rake db:rollback && be rake db:migrate && be rake db:test:prepare'
+alias ec2s='for s in staging production; do echo $s; be cap $s ec2:status; done;'
 
 source ~/.functions/colors.zsh;
 source ~/.functions/tail-in-colors.zsh;
