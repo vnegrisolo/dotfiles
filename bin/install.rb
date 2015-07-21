@@ -22,7 +22,6 @@ class Install < Thor::Group
     end
 
     link_file 'functions', '~/.functions'
-    link_file 'ssh/config', '~/.ssh/config'
   end
 
   private
