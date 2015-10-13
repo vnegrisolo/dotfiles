@@ -70,3 +70,12 @@ enter in your project directory, open the vim with `vim .` and open the NERDTree
 
 * `Gstatus` - git status
 * `-` - add/reset file to stage
+
+## rails
+
+* `gf` - open rails file based on text under the cursor
+* `:A` - alternate file
+* `:R` - related file
+* `:Emodel` - open the model
+* `:Econtroller` - open the controller
+* `:Eview` - open the view
