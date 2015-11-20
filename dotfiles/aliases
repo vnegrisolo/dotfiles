@@ -3,8 +3,12 @@ alias open_file_system_to_web='ifconfig | grep 192.168; python -m SimpleHTTPServ
 alias gs='git status';
 
 alias be='bundle exec';
-alias berm="echo '#=> run 1st migration'; be rake db:migrate && echo '#=> run rollback'; be rake db:rollback && echo '#=> run 2nd migration'; be rake db:migrate && echo '#=> run test prepare'; be rake db:test:prepare";
+alias berm="echo '#=> run 1st migration'; be rake db:migrate && echo '#=> run rollback'; be rake db:rollback; git diff db/ | cat && echo '#=> run 2nd migration'; be rake db:migrate; git diff db/ | cat && echo '#=> run test prepare'; be rake db:test:prepare";
 alias ec2s='for s in staging production; do echo $s; be cap $s ec2:status; done;'
+alias es='npm install; bower install; ember server'
+alias et='ember test'
+alias ets='ember test --server'
+alias vv='a=(git rbenv ruby gem bundle rails node nodejs npm bower ember phantomjs watchman); for i in "${a[@]}"; do; echo "${i} = `${i} --version`"; done;'
 
 source ~/.functions/colors.zsh;
 source ~/.functions/tail-in-colors.zsh;
