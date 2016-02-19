@@ -1,0 +1,22 @@
+#!/bin/bash
+
+function link_file_to_home {
+  file="${PWD}/${1}"
+  destination=${HOME}/${2}
+
+  if [ ! -L $destination ]; then
+    echo "Link file=${file} to=${destination}"
+    ln -nfs ${file} ${destination}
+  else
+    echo "Skip link file=${file} to=${destination} - exists already"
+  fi
+}
+
+link_file_to_home "dotfiles/gitconfig.local" ".gitconfig.local"
+link_file_to_home "dotfiles/gitignore" ".gitignore"
+link_file_to_home "dotfiles/ruby-version" ".ruby-version"
+link_file_to_home "dotfiles/shrc.local" ".zshrc.local"
+link_file_to_home "dotfiles/shrc.local" ".bashrc.local"
+link_file_to_home "dotfiles/vimrc.local" ".vimrc.local"
+
+exit 0

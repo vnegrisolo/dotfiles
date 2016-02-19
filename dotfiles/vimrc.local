@@ -1,0 +1,11 @@
+set colorcolumn=80
+set number
+
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch
+nmap <silent> // :nohlsearch<CR>
+
+let g:markdown_fenced_languages = ['html', 'vim', 'ruby', 'python', 'bash=sh']
+

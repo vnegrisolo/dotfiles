@@ -1,25 +1,11 @@
 # dotfiles
-[![Build Status](https://travis-ci.org/vnegrisolo/dotfiles.svg)](https://travis-ci.org/vnegrisolo/dotfiles)
-[![Code Climate](https://codeclimate.com/github/vnegrisolo/dotfiles/badges/gpa.svg)](https://codeclimate.com/github/vnegrisolo/dotfiles)
 
 :books: Dotfiles and Tips
 
 # Install Dotfiles
 
-The install ruby script will create some symbol links in your home directory.
-```shell
-bundle install;
-./bin/install.rb;
-```
-
-# Git hook
-
-## Blocks commits in master branch
-
-copy the `config/pre-commit.sh` file to the project and run:
-
-```shell
-cp config/pre-commit.sh {PROJECT_PATH}/.git/hooks/pre-commit
+```bash
+./bin/install;
 ```
 
 # Setup in Mac
