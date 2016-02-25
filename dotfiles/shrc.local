@@ -14,3 +14,5 @@ alias vcd='cd ~/vfn/projects/vnegrisolo'
 alias pbcopy='xclip -selection clipboard'
 
 alias open_file_system_to_web='ifconfig | grep 192.168; python -m SimpleHTTPServer 8998;';
+
+eval "$(rbenv init -)"
