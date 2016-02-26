@@ -18,5 +18,6 @@ link_file_to_home "dotfiles/ruby-version" ".ruby-version"
 link_file_to_home "dotfiles/shrc.local" ".zshrc.local"
 link_file_to_home "dotfiles/shrc.local" ".bashrc.local"
 link_file_to_home "dotfiles/vimrc.local" ".vimrc.local"
+link_file_to_home "dotfiles/vimbundle.local" ".vimbundle.local"
 
 exit 0

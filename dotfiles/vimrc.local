@@ -9,3 +9,5 @@ nmap <silent> // :nohlsearch<CR>
 
 let g:markdown_fenced_languages = ['html', 'vim', 'ruby', 'python', 'bash=sh']
 
+set background=dark
+colorscheme solarized
