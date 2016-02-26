@@ -10,9 +10,8 @@ export LC_ALL="";
 alias l='ls -lah'
 alias grep='grep --color'
 alias t='task'
-alias vcd='cd ~/projects/vnegrisolo'
 alias open_file_system_to_web='ifconfig | grep 192.168; python -m SimpleHTTPServer 8998;';
 
-source ~/.functions/*;
+for f in ~/.functions/*; do source ${f}; done
 
 eval "$(rbenv init -)"
