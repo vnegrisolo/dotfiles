@@ -11,7 +11,7 @@ alias l='ls -lah'
 alias grep='grep --color'
 alias t='task'
 alias vcd='cd ~/projects/vnegrisolo'
-
+alias mux='~/projects/vnegrisolo/dotfiles/scripts/mux.sh'
 alias open_file_system_to_web='ifconfig | grep 192.168; python -m SimpleHTTPServer 8998;';
 
 eval "$(rbenv init -)"
