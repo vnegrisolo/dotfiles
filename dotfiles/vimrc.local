@@ -17,3 +17,5 @@ let g:markdown_fenced_languages = ['html', 'vim', 'ruby', 'python', 'bash=sh']
 
 set background=dark
 colorscheme solarized
+
+set runtimepath^=~/.vim/bundle/ag.vim
