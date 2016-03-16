@@ -15,3 +15,5 @@ alias open_file_system_to_web='ifconfig | grep 192.168; python -m SimpleHTTPServ
 for f in ~/.functions/*; do source ${f}; done
 
 eval "$(rbenv init -)"
+
+export PATH=/Applications/phantomjs-2.1.1-macosx/bin/:$PATH
