@@ -14,6 +14,9 @@ mux() {
     tmux select-window -t ${project}:0;
     tmux split-window -h 'vim .';
 
+    tmux new-window;
+    tmux rename-window -t ${project}:1 server;
+
     tmux select-window -t ${project}:0;
 
     echo "New session on tmux=${project}";
