@@ -32,3 +32,4 @@ Uncheck the bright on bold
 * [vim](https://github.com/vnegrisolo/dotfiles/tree/master/docs/vim.md)
 * [aws](https://github.com/vnegrisolo/dotfiles/tree/master/docs/aws.md)
 changed
+changed
