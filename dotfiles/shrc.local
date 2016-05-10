@@ -12,6 +12,14 @@ alias grep='grep --color'
 alias t='task'
 alias open_file_system_to_web='ifconfig | grep 192.168; python -m SimpleHTTPServer 8998;';
 alias cuco='cucumber | egrep "^[Given|When|Then]" | pbcopy';
+alias versions='
+  echo "rbenv  => $(rbenv -v)"
+  echo "ruby   => $(ruby -v)"
+  echo "gem    => $(gem -v)"
+  echo "bundle => $(bundler -v)"
+  echo "rake   => $(rake --version)"
+  echo "rails  => $(rails -v)"
+';
 
 for f in ~/.functions/*; do source ${f}; done
 
