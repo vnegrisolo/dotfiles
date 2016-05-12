@@ -8,6 +8,7 @@ mux() {
     echo 'usage ./tmux.sh <project_name>';
   else
     cd ${project};
+    project=${project/\./-}
     tmux new -d -s ${project};
 
     tmux rename-window -t ${project}:0 code;
