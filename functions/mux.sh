@@ -1,14 +1,16 @@
 #!/bin/sh
 
 mux() {
-  echo "mux running"
-  project=${1%/};
+  if [ -z "$@" ]; then
+    echo 'usage ./tmux.sh <project_name> [<project2]';
+  fi
 
-  if [ -z "${project}" ]; then
-    echo 'usage ./tmux.sh <project_name>';
-  else
+  for project in "$@"; do
     cd ${project};
+
+    project=${project%/};
     project=${project/\./-}
+
     tmux new -d -s ${project};
 
     tmux rename-window -t ${project}:0 code;
@@ -22,7 +24,7 @@ mux() {
 
     echo "New session on tmux=${project}";
     cd ..;
-  fi
+  done
 
   echo "Tmux sessions:"
   tmux ls;
