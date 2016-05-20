@@ -11,6 +11,7 @@ alias l='ls -lah'
 alias grep='grep --color'
 alias t='task'
 alias open_file_system_to_web='ifconfig | grep 192.168; python -m SimpleHTTPServer 8998;';
+alias be='bundle exec';
 alias cuco='cucumber | egrep "^[Given|When|Then]" | pbcopy';
 alias versions='
   echo "rbenv  => $(rbenv -v)"
@@ -19,6 +20,10 @@ alias versions='
   echo "bundle => $(bundler -v)"
   echo "rake   => $(rake --version)"
   echo "rails  => $(rails -v)"
+  echo "node   => $(node -v)"
+  echo "npm    => $(npm -v)"
+  echo "bower  => $(bower -v)"
+  echo "ember  => $(ember -v | grep ember)"
 ';
 
 for f in ~/.functions/*; do source ${f}; done

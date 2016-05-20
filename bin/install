@@ -13,13 +13,13 @@ function link_file_to_home {
 }
 
 link_file_to_home "dotfiles/gitconfig.local" ".gitconfig.local"
-link_file_to_home "dotfiles/gitignore" ".gitignore"
-link_file_to_home "dotfiles/ruby-version" ".ruby-version"
-link_file_to_home "dotfiles/shrc.local" ".zshrc.local"
-link_file_to_home "dotfiles/shrc.local" ".bashrc.local"
-link_file_to_home "dotfiles/vimrc.local" ".vimrc.local"
+link_file_to_home "dotfiles/gitignore"       ".gitignore"
+link_file_to_home "dotfiles/ruby-version"    ".ruby-version"
+link_file_to_home "dotfiles/shrc.local"      ".zshrc.local"
+link_file_to_home "dotfiles/shrc.local"      ".bashrc.local"
+link_file_to_home "dotfiles/vimrc.local"     ".vimrc.local"
 link_file_to_home "dotfiles/vimbundle.local" ".vimbundle.local"
 
-link_file_to_home "functions/" ".functions"
+link_file_to_home "functions/"               ".functions"
 
 exit 0
