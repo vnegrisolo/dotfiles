@@ -20,6 +20,7 @@ mux() {
     tmux new-window;
     tmux rename-window -t ${project}:1 server;
 
+    tmux select-layout -t ${project}:0 main-vertical;
     tmux select-window -t ${project}:0;
 
     echo "New session on tmux=${project}";
