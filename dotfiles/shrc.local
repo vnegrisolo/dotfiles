@@ -32,11 +32,3 @@ eval "$(rbenv init -)"
 
 export PATH=/Applications/phantomjs-2.1.1-macosx/bin/:$PATH
 export PATH=~/.npm-packages/bin/:$PATH
-
-p=
-if [ -n "$SSH_CONNECTION" ]; then
-  p='%{$fg[yellow]%}%n'
-else
-  p='%{$fg[green]%}%n'
-fi
-PROMPT="$p%{\$reset_color%}:%{\$fg[cyan]%}%~%{\$reset_color%}\$(git_prompt_info '(%s)')%# "
