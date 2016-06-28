@@ -9,7 +9,7 @@ mux() {
     cd ${project};
 
     project=${project%/};
-    project=${project/\./-}
+    project=${project//\./-}
 
     tmux new -d -s ${project};
 
