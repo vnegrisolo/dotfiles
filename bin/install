@@ -14,6 +14,7 @@ function link_file_to_home {
 
 link_file_to_home "dotfiles/gitconfig.local" ".gitconfig.local"
 link_file_to_home "dotfiles/gitignore"       ".gitignore"
+link_file_to_home "dotfiles/irbrc.local"     ".irbrc.local"
 link_file_to_home "dotfiles/ruby-version"    ".ruby-version"
 link_file_to_home "dotfiles/shrc.local"      ".zshrc.local"
 link_file_to_home "dotfiles/shrc.local"      ".bashrc.local"
