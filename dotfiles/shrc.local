@@ -24,6 +24,10 @@ alias versions='
   echo "npm    => $(npm -v)"
   echo "bower  => $(bower -v)"
   echo "ember  => $(ember -v | grep ember)"
+  echo "erl    => $(erl -version)"
+  echo "iex    => $(iex --version)"
+  echo "mix    => $(mix --version)"
+  echo "elixir => $(elixir -v)"
 ';
 
 for f in ~/.functions/*; do source ${f}; done
