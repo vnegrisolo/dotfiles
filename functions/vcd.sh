@@ -1,5 +1,5 @@
 #!/bin/sh
 
 vcd() {
-  cd ~/apps/$1
+  cd ~/vfn/projects/vnegrisolo/$1
 }
