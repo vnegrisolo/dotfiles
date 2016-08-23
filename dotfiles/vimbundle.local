@@ -6,3 +6,4 @@ marcweber/vim-addon-mw-utils
 tomtom/tlib_vim
 honza/vim-snippets
 elixir-lang/vim-elixir
+slashmili/alchemist.vim
