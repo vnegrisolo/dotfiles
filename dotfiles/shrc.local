@@ -7,9 +7,9 @@ export LC_NUMERIC="en_US.UTF-8";
 export LC_TIME="en_US.UTF-8";
 export LC_ALL="";
 
-alias l='ls -lah'
-alias grep='grep --color'
-alias t='task'
+alias l='ls -lah';
+alias grep='grep --color';
+alias t='task';
 alias open_file_system_to_web='ifconfig | grep 192.168; python -m SimpleHTTPServer 8998;';
 alias be='bundle exec';
 alias cuco='cucumber | egrep "^[Given|When|Then]" | pbcopy';

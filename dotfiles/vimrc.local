@@ -1,5 +1,6 @@
 set colorcolumn=80
 set number
+set spell spelllang=en_us
 
 filetype plugin indent on
 au FileType cucumber setl sw=2 sts=2 et
