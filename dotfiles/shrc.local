@@ -13,6 +13,7 @@ alias t='task';
 alias open_file_system_to_web='ifconfig | grep 192.168; python -m SimpleHTTPServer 8998;';
 alias be='bundle exec';
 alias cuco='cucumber | egrep "^[Given|When|Then]" | pbcopy';
+alias chrome="open -a /Applications/Google\ Chrome.app";
 alias versions='
   echo "rbenv  => $(rbenv -v)"
   echo "ruby   => $(ruby -v)"
