@@ -1,6 +1,9 @@
 set colorcolumn=80
 set number
 set spell spelllang=en_us
+set exrc
+set foldmethod=indent
+set foldlevel=5
 
 filetype plugin indent on
 au FileType cucumber setl sw=2 sts=2 et
@@ -30,3 +33,5 @@ else
 endif
 
 hi Search ctermfg=NONE ctermbg=NONE cterm=bold,underline
+
+autocmd BufRead *.md nmap <buffer> <leader>t :<C-U>w \| call Send_to_Tmux("chrome http://localhost:4000/ \n")<CR>

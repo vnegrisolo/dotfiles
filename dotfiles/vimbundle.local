@@ -7,3 +7,5 @@ tomtom/tlib_vim
 honza/vim-snippets
 elixir-lang/vim-elixir
 slashmili/alchemist.vim
+sjl/gundo.vim
+tpope/vim-vinegar
