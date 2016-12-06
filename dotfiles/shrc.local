@@ -40,3 +40,4 @@ eval "$(rbenv init -)"
 export PATH=/Applications/phantomjs-2.1.1-macosx/bin/:$PATH
 export PATH=~/.npm-packages/bin/:$PATH
 eval "$(/Users/vnegrisolo/hashrocket/dotmatrix/hr/bin/hr init -)"
+source /Users/vnegrisolo/vfn/projects/funding-circle/devtools/.source
