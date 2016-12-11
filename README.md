@@ -28,6 +28,4 @@ Uncheck the bright on bold
 # Documentation
 
 * [ruby](https://github.com/vnegrisolo/dotfiles/tree/master/docs/ruby.md)
-* [git](https://github.com/vnegrisolo/dotfiles/tree/master/docs/git.md)
-* [vim](https://github.com/vnegrisolo/dotfiles/tree/master/docs/vim.md)
 * [aws](https://github.com/vnegrisolo/dotfiles/tree/master/docs/aws.md)
