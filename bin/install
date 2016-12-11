@@ -29,6 +29,8 @@ link_file_to_home "dotfiles/irbrc"           ".irbrc"
 link_file_to_home "dotfiles/railsrc"         ".railsrc"
 link_file_to_home "dotfiles/rspec"           ".rspec"
 
+link_file_to_home "dotfiles/psqlrc"           ".psqlrc"
+
 link_file_to_home "dotfiles/ackrc"           ".ackrc"
 link_file_to_home "dotfiles/vimrc.local"     ".vimrc.local"
 link_file_to_home "dotfiles/vimbundle.local" ".vimbundle.local"
