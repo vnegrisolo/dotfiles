@@ -1,3 +1,5 @@
+execute pathogen#infect()
+
 if $VIM_PLUGINS != 'NO'
   runtime! autoload/pathogen.vim
   if exists('g:loaded_pathogen')

@@ -9,7 +9,7 @@ function link_file_to_home {
 
   if [ ! -L ${destination} ]; then
     echo -e "${c_green}Link${c_reset} file=${file} to=${destination}"
-    ln -nfs ${file} ${destination}
+    ln -s ${file} ${destination}
   else
     echo -e "${c_cyan}Skip${c_reset} link file=${file} to=${destination} - exists already"
   fi
