@@ -1,0 +1,44 @@
+alias l='ls -lah';
+alias grep='grep --color';
+alias open_file_system_to_web='ifconfig | grep 192.168; python -m SimpleHTTPServer 8998;';
+alias versions='
+  echo "git    => $(git --version)"
+  echo "hub    => $(hub --version)"
+  echo "rbenv  => $(rbenv -v)"
+  echo "ruby   => $(ruby -v)"
+  echo "gem    => $(gem -v)"
+  echo "bundle => $(bundler -v)"
+  echo "rake   => $(rake --version)"
+  echo "rails  => $(rails -v)"
+  echo "node   => $(node -v)"
+  echo "npm    => $(npm -v)"
+  echo "bower  => $(bower -v)"
+  echo "ember  => $(ember -v | grep ember)"
+  echo "erl    => $(erl -version)"
+  echo "iex    => $(iex --version)"
+  echo "mix    => $(mix --version)"
+  echo "elixir => $(elixir -v)"
+';
+
+alias be='bundle exec';
+alias berm='bundle exec rake db:migrate db:migrate:redo db:test:prepare'
+alias cuco='cucumber | egrep "^[Given|When|Then]" | pbcopy';
+
+gref() {
+  command git --no-pager diff --cached --stat | command grep "|\s*0$" | awk '{system("command git reset " $1)}'
+}
+
+alias gap='git add -p'
+alias gnap='git add -N --ignore-removal . && gap && gref'
+alias gb='git branch'
+alias gc='git commit -v'
+alias gco='git checkout'
+alias gd='git diff'
+alias gdc='git diff --cached'
+alias glp='git log -p'
+alias glg='git log --graph --oneline --decorate --color --all'
+alias glod='git log --oneline --decorate'
+alias gp='git push'
+alias gpr='git pull --rebase'
+alias gst='git status'
+alias reset-authors='git commit --amend --reset-author -C HEAD'

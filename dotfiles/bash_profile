@@ -1,0 +1,1 @@
+file="$HOME/.bashrc"; if [[ -s $file ]] ; then source $file ; fi
