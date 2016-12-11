@@ -31,8 +31,9 @@ link_file_to_home "dotfiles/rspec"           ".rspec"
 
 link_file_to_home "dotfiles/ackrc"           ".ackrc"
 link_file_to_home "dotfiles/ctags"           ".ctags"
-link_file_to_home "dotfiles/vimrc.local"     ".vimrc.local"
-link_file_to_home "dotfiles/vimbundle.local" ".vimbundle.local"
+link_file_to_home "dotfiles/vim"             ".vim"
+link_file_to_home "dotfiles/vimrc"           ".vimrc"
+link_file_to_home "dotfiles/vimbundle"       ".vimbundle"
 
 link_file_to_home "dotfiles/psqlrc"          ".psqlrc"
 link_file_to_home "dotfiles/tmux.conf"       ".tmux.conf"
