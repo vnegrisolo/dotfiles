@@ -3,7 +3,7 @@ c_green="\[\033[32m\]"
 c_cyan="\[\033[36m\]"
 
 [ -z "$PS1" ] || stty -ixon
-[ -z "$PS1" ] || export PS1="$c_green\u@\h$c_reset:$c_cyan\w$c_reset\$ "
+[ -z "$PS1" ] || export PS1="${c_green}\u@\h${c_reset}:${c_cyan}\w${c_reset}\$ "
 
 file="$HOME/.sh_exports";   if [[ -s $file ]] ; then source $file ; fi
 file="$HOME/.sh_aliases";   if [[ -s $file ]] ; then source $file ; fi
