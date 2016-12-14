@@ -42,3 +42,6 @@ alias gp='git push'
 alias gpr='git pull --rebase'
 alias gst='git status'
 alias reset-authors='git commit --amend --reset-author -C HEAD'
+
+alias cdv="cd ~/vfn/projects/vnegrisolo/"
+alias cdf="cd ~/vfn/projects/funding-circle/"
