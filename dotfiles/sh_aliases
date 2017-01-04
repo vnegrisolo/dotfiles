@@ -47,3 +47,5 @@ alias reset-authors='git commit --amend --reset-author -C HEAD'
 
 alias cdv="cd ~/vfn/projects/vnegrisolo/"
 alias cdf="cd ~/vfn/projects/funding-circle/"
+
+alias vim-update='cd ~/.vim/bundle/; for i in *; do; echo "updating => ${i}"; cd $i; gpr; cd ..; done'
