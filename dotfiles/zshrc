@@ -6,6 +6,5 @@ source $ZSH/oh-my-zsh.sh
 file="$HOME/.sh_exports";  if [[ -s $file ]] ; then source $file ; fi
 file="$HOME/.sh_aliases";  if [[ -s $file ]] ; then source $file ; fi
 file="$HOME/.zshrc.local"; if [[ -s $file ]] ; then source $file ; fi
-for f in $HOME/.functions/*; do source ${f}; done
 
 eval "$(rbenv init -)"

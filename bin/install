@@ -25,17 +25,12 @@ link_file_to_home "dotfiles/gitconfig"       ".gitconfig"
 link_file_to_home "dotfiles/gitignore"       ".gitignore"
 
 link_file_to_home "dotfiles/ruby-version"    ".ruby-version"
-link_file_to_home "dotfiles/irbrc"           ".irbrc"
-link_file_to_home "dotfiles/railsrc"         ".railsrc"
-link_file_to_home "dotfiles/rspec"           ".rspec"
 
-link_file_to_home "dotfiles/ackrc"           ".ackrc"
 link_file_to_home "dotfiles/ctags"           ".ctags"
 link_file_to_home "dotfiles/vim"             ".vim"
 link_file_to_home "dotfiles/vimrc"           ".vimrc"
 link_file_to_home "dotfiles/vimbundle"       ".vimbundle"
 
-link_file_to_home "dotfiles/psqlrc"          ".psqlrc"
 link_file_to_home "dotfiles/tmux.conf"       ".tmux.conf"
 
 exit 0
