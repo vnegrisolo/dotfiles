@@ -33,4 +33,6 @@ link_file_to_home "dotfiles/vimbundle"       ".vimbundle"
 
 link_file_to_home "dotfiles/tmux.conf"       ".tmux.conf"
 
+link_file_to_home "dotfiles/psqlrc"          ".psqlrc"
+
 exit 0
