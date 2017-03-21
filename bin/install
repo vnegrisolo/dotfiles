@@ -35,4 +35,6 @@ link_file_to_home "dotfiles/tmux.conf"       ".tmux.conf"
 
 link_file_to_home "dotfiles/psqlrc"          ".psqlrc"
 
+link_file_to_home "dotfiles/iex.exs"       ".iex.exs"
+
 exit 0
