@@ -33,7 +33,6 @@ if filereadable(expand('~/.vimrc.local'))
   source ~/.vimrc.local
 endif
 
-
 set colorcolumn=80
 set number
 set spell spelllang=en_us
@@ -72,3 +71,9 @@ hi Search ctermfg=NONE ctermbg=NONE cterm=bold,underline
 
 autocmd BufRead *.md nmap <buffer> <leader>t :<C-U>w \| call Send_to_Tmux("chrome http://localhost:4000/ \n")<CR>
 autocmd BufRead * vmap <buffer> \\ <Plug>SendSelectionToTmux
+
+silent !mkdir ~/.vim/.backup ~/.vim/.swp ~/.vim/.undo > /dev/null 2>&1
+
+set undodir=~/.vim/.undo//
+set backupdir=~/.vim/.backup//
+set directory=~/.vim/.swp//
