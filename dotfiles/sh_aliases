@@ -51,5 +51,6 @@ alias cdv="cd ~/vfn/projects/vnegrisolo/"
 alias cdf="cd ~/vfn/projects/funding-circle/"
 
 alias vim-update='cd ~/.vim/bundle/; for i in *; do; echo "UPDATING => \e[0;36m${i}\e[0m"; cd $i; gpr; cd ..; done'
+alias vim-install='cd ~/.vim/bundle/; for i in $(cat ~/.vimbundle); do; if [[ ! -e ${i#*/} ]]; then; echo "INSTALLING => \e[0;36m${i}\e[0m"; $(git clone https://github.com/${i}.git); fi; done'
 
 alias mux='_d=${PWD##*/}; _d=${_d//\./-}; echo $_d; tmux new -d -s $_d; tmux split-window -h; tmux split-window -v; tmux a'
