@@ -59,3 +59,4 @@ elixir-lang/vim-elixir
 slashmili/alchemist.vim
 sjl/gundo.vim
 tpope/vim-vinegar
+kien/ctrlp.vim
