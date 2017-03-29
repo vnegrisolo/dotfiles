@@ -71,6 +71,7 @@ hi Search ctermfg=NONE ctermbg=NONE cterm=bold,underline
 
 autocmd BufRead *.md nmap <buffer> <leader>t :<C-U>w \| call Send_to_Tmux("chrome http://localhost:4000/ \n")<CR>
 autocmd BufRead * vmap <buffer> \\ <Plug>SendSelectionToTmux
+autocmd BufEnter *.png,*.jpg,*gif exec "! imgcat ".expand("%") | :bw
 
 silent !mkdir ~/.vim/.backup ~/.vim/.swp ~/.vim/.undo > /dev/null 2>&1
 
