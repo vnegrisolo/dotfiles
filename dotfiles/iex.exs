@@ -1,4 +1,4 @@
-IO.puts IO.ANSI.red_background() <> IO.ANSI.white() <> " #### IEX => Elixir's interactive shell ##### " <> IO.ANSI.reset
+IO.puts IO.ANSI.green() <> "IEX => Elixir's interactive shell\nREADY..." <> IO.ANSI.reset
 Application.put_env(:elixir, :ansi_enabled, true)
 IEx.configure(
  colors: [
