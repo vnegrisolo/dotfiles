@@ -6,7 +6,7 @@
 [core]
   excludesfile = ~/.gitignore
   editor = vim
-	whitespace = warn
+  whitespace = warn
 [color]
   diff = auto
   status = auto
@@ -28,3 +28,8 @@
   path = ~/.gitconfig.local
 [push]
   default = simple
+[commit]
+  verbose = true
+[pair "vnegrisolo"]
+	email = vinicius.negrisolo@gmail.com
+	name = Vinicius Ferreira Negrisolo
