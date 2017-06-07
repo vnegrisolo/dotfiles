@@ -67,7 +67,7 @@ alias dload='eval $(docker-machine env default)'
 alias dstop='docker-machine stop'
 alias dcstart='docker-compose up -d'
 alias dcstop='docker-compose stop'
-alias dls='echo -e "### \e[33mVOLUMES\e[0m\n`docker volume ls`\n### \e[33mIMAGES\e[0m\n`docker images -a`\n### \e[33mCONTAINERS\e[0m\n`docker ps -a`"'
+alias dls='echo -e "### \e[33mMACHINES\e[0m\n`docker-machine ls`\n### \e[33mVOLUMES\e[0m\n`docker volume ls`\n### \e[33mIMAGES\e[0m\n`docker images -a`\n### \e[33mCONTAINERS\e[0m\n`docker ps -a`"'
 alias dps='docker ps'
 alias dclear='docker rm $(docker ps -a -q) && docker rmi $(docker images -q) && docker volume rm $(docker volume ls -q)'
 
