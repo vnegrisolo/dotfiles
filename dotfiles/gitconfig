@@ -26,10 +26,12 @@
   prune = true
 [include]
   path = ~/.gitconfig.local
+[commit]
+  template = ~/.git-commit
 [push]
   default = simple
 [commit]
   verbose = true
 [pair "vnegrisolo"]
-	email = vinicius.negrisolo@gmail.com
-	name = Vinicius Ferreira Negrisolo
+  email = vinicius.negrisolo@gmail.com
+  name = Vinicius Ferreira Negrisolo
