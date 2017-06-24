@@ -41,6 +41,33 @@ alias cuco='cucumber | egrep "^[Given|When|Then]" | pbcopy';
 gref() {
   command git --no-pager diff --cached --stat | command grep "|\s*0$" | awk '{system("command git reset " $1)}'
 }
+gemoji() {
+  filter=$1
+  emojis="🎉  initial commit
+🐛  fix a bug
+🔥  remove code
+⚡️  performance
+🎨  refactor code
+✨  new feature
+💄  style/UI
+🚚  move/rename files
+👕  fix linter/deprecation
+✅  add/fix tests
+🔧  configuration
+📚  documentation
+✏️  update text/literals
+🌐  i18n/l10n
+⬆️  upgrade dependencies
+⬇️  downgrade dependencies
+🚀  deploy code
+♻️  add/fix ci
+🔒  security
+🔖  release new tag
+♿️  improve accessibility
+📈  track/analytics"
+
+  if [[ -z $filter ]]; then; echo $emojis; else; echo $emojis | grep -i $filter; fi
+}
 
 alias gap='git add -p'
 alias gnap='git add -N --ignore-removal . && gap && gref'
