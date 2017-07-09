@@ -1,22 +1,22 @@
-# 🎉  initial_commit
-# 🐛  fix_a_bug
-# 🔥  remove_code
-# ⚡️  performance
-# 🎨  refactor_code
-# ✨  new_feature
-# 💄  style_UI
-# 🚚  move_rename_files
-# 👕  fix_linter_deprecation
-# ✅  add_fix_tests
-# 🔧  configuration
-# 📚  documentation
-# ✏️   update_text_literals
-# 🌐  i18n_l10n
-# ⬆️   upgrade_dependencies
-# ⬇️   downgrade_dependencies
-# 🚀  deploy_code
-# ♻️   add_fix_ci
-# 🔒  security
-# 🔖  release_new_tag
-# ♿️  improve_accessibility
-# 📈  track_analytics
+#🎉  initial_commit
+#🐛  fix_a_bug
+#🔥  remove_code
+#⚡️  performance
+#🎨  refactor_code
+#✨  new_feature
+#💄  style_UI
+#🚚  move_rename_files
+#👕  fix_linter_deprecation
+#✅  add_fix_tests
+#🔧  configuration
+#📚  documentation
+#✏️  update_text_literals
+#🌐  i18n_l10n
+#⬆️  upgrade_dependencies
+#⬇️  downgrade_dependencies
+#🚀  deploy_code
+#♻️  add_fix_ci
+#🔒  security
+#🔖  release_new_tag
+#♿️  improve_accessibility
+#📈  track_analytics
