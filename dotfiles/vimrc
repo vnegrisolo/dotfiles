@@ -78,3 +78,5 @@ silent !mkdir ~/.vim/.backup ~/.vim/.swp ~/.vim/.undo > /dev/null 2>&1
 set undodir=~/.vim/.undo//
 set backupdir=~/.vim/.backup//
 set directory=~/.vim/.swp//
+
+nnoremap H :set cursorline! cursorcolumn!<CR>
