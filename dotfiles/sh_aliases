@@ -63,13 +63,16 @@ alias gcf='(gd --name-only; gdc --name-only; gd --name-only ..master; git ls-fil
 alias cdv="cd ~/vfn/projects/vnegrisolo/"
 alias cdf="cd ~/vfn/projects/funding-circle/"
 
-alias dstart='docker-machine start && docker-machine ip default && eval $(docker-machine env default)'
-alias dload='eval $(docker-machine env default)'
-alias dstop='docker-machine stop'
-alias dcstart='docker-compose up -d'
-alias dcstop='docker-compose stop'
-alias dls='echo -e "### \e[33mMACHINES\e[0m\n`docker-machine ls`\n### \e[33mVOLUMES\e[0m\n`docker volume ls`\n### \e[33mIMAGES\e[0m\n`docker images -a`\n### \e[33mCONTAINERS\e[0m\n`docker ps -a`"'
 alias dps='docker ps'
+alias dload='eval $(docker-machine env default)'
+alias dstart='docker-machine start && docker-machine ip default && dload'
+alias dstop='docker-machine stop'
+alias dlsm='echo "#=> \e[33mMACHINES\e[0m\n`docker-machine ls`"'
+alias dlsn='echo "#=> \e[33mNETWORK\e[0m\n`docker network ls`"'
+alias dlsv='echo "#=> \e[33mVOLUMES\e[0m\n`docker volume ls`"'
+alias dlsi='echo "#=> \e[33mIMAGES\e[0m\n`docker images -a`"'
+alias dlsc='echo "#=> \e[33mCONTAINERS\e[0m\n`docker ps -a`"'
+alias dls='dlsm; dlsn; dlsv; dlsi; dlsc'
 alias dclear='docker rm $(docker ps -a -q) && docker rmi $(docker images -q) && docker volume rm $(docker volume ls -q)'
 
 alias vim-update='cd ~/.vim/bundle/; for i in *; do; echo "UPDATING => \e[0;36m${i}\e[0m"; cd $i; gpr; cd ..; done'
