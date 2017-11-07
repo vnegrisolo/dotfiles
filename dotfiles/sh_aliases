@@ -62,6 +62,7 @@ alias gcf='(gd --name-only; gdc --name-only; gd --name-only ..master; git ls-fil
 
 alias cdv="cd ~/vfn/projects/vnegrisolo/"
 alias cdf="cd ~/vfn/projects/funding-circle/"
+alias cdr="cd ~/vfn/projects/rekki/"
 
 alias dps='docker ps'
 alias dload='eval $(docker-machine env default)'
