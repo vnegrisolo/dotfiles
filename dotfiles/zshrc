@@ -1,6 +1,8 @@
 export ZSH=/Users/vnegrisolo/.oh-my-zsh
 ZSH_THEME="robbyrussell"
-plugins=()
+plugins=(
+  git
+)
 source $ZSH/oh-my-zsh.sh
 
 file="$HOME/.sh_exports";  if [[ -s $file ]] ; then source $file ; fi
