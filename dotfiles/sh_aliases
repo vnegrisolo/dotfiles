@@ -61,7 +61,6 @@ alias reset-authors='git commit --amend --reset-author -C HEAD'
 alias gcf='(gd --name-only; gdc --name-only; gd --name-only ..master; git ls-files --others --exclude-standard) | sort -u'
 
 alias cdv="cd ~/vfn/projects/vnegrisolo/"
-alias cdf="cd ~/vfn/projects/funding-circle/"
 alias cdr="cd ~/vfn/projects/rekki/"
 
 alias dps='docker ps'
