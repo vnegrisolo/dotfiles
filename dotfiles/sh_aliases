@@ -56,9 +56,11 @@ alias gp='git push'
 alias gplease='git push --force-with-lease'
 alias gpr='git pull --rebase'
 alias gprm='gpr; git fetch -p; echo "merged with master:"; git branch --merged master'
+alias gprmd='gpr; git fetch -p; echo "merged with develop:"; git branch --merged develop'
 alias gst='git status'
 alias reset-authors='git commit --amend --reset-author -C HEAD'
 alias gcf='(gd --name-only; gdc --name-only; gd --name-only ..master; git ls-files --others --exclude-standard) | sort -u'
+alias gcfd='(gd --name-only; gdc --name-only; gd --name-only ..develop; git ls-files --others --exclude-standard) | sort -u'
 
 alias cdv="cd ~/vfn/projects/vnegrisolo/"
 alias cdr="cd ~/vfn/projects/rekki/"
