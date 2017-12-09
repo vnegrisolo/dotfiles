@@ -13,6 +13,7 @@ alias versions_git='
 alias versions_js='
   echo "\e[36mnode \e[0m=> $(node -v)"
   echo "\e[36mnpm \e[0m=> $(npm -v)"
+  echo "\e[36mbrunch \e[0m=> $(brunch -v)"
   echo "\e[36mbower \e[0m=> $(bower -v)"
   echo "\e[36mphantomjs \e[0m=> $(phantomjs -v)"
   echo "\e[36member \e[0m=> $(ember -v | grep ember)"
