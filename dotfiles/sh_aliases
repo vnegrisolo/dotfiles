@@ -83,6 +83,9 @@ alias vim-install='mkdir -p ~/.vim/bundle/; cd ~/.vim/bundle/; for i in $(cat ~/
 
 alias mux='_d=${PWD##*/}; _d=${_d//\./-}; echo $_d; tmux new -d -s $_d; tmux split-window -h; tmux split-window -v; tmux a'
 
+alias chrome='open -a "Google Chrome"'
+alias t='task'
+
 pdf_listen() {
   f=/tmp/pdf_listen.txt
   pdftotext $1 $f
