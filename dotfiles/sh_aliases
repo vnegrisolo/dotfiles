@@ -42,6 +42,16 @@ alias cuco='cucumber | egrep "^[Given|When|Then]" | pbcopy';
 gref() {
   command git --no-pager diff --cached --stat | command grep "|\s*0$" | awk '{system("command git reset " $1)}'
 }
+gbcc() {
+  branches=(`gb`)
+  for i in $branches; do
+    if [[ $i =~ ^(\\*|master)$ ]]; then
+    else
+      echo "=> ${i}";
+      git rev-list --left-right --count master...${i}
+    fi
+  done
+}
 
 alias gap='git add -p'
 alias gnap='git add -N --ignore-removal . && gap && gref'
