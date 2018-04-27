@@ -6,6 +6,15 @@ Host gitlab.com
   HostName gitlab.com
   IdentityFile ~/.ssh/gitlab_id_rsa
 
+Host gitlab.rekki.com
+  HostName gitlab.rekki.com
+  IdentityFile ~/.ssh/gitlab_rekki_id_rsa
+
 Host heroku.com
   HostName heroku.com
   IdentityFile ~/.ssh/heroku_id_rsa
+
+Host *.rekki.com
+  IdentityFile ~/.ssh/rekki_feat_id_rsa
+  User arch
+  Port 19022
