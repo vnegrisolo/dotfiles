@@ -9,4 +9,5 @@ file="$HOME/.sh_exports";  if [[ -s $file ]] ; then source $file ; fi
 file="$HOME/.sh_aliases";  if [[ -s $file ]] ; then source $file ; fi
 file="$HOME/.zshrc.local"; if [[ -s $file ]] ; then source $file ; fi
 
-eval "$(rbenv init -)"
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash

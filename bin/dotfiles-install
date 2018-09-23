@@ -25,7 +25,8 @@ link_file_to_home "dotfiles/gitconfig"    ".gitconfig"
 link_file_to_home "dotfiles/gitignore"    ".gitignore"
 link_file_to_home "dotfiles/git-commit"   ".git-commit"
 
-link_file_to_home "dotfiles/ruby-version" ".ruby-version"
+link_file_to_home "dotfiles/tool-versions" ".tool-versions"
+
 link_file_to_home "dotfiles/railsrc"      ".railsrc"
 
 link_file_to_home "dotfiles/ctags"        ".ctags"
