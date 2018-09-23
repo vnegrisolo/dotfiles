@@ -8,18 +8,12 @@ alias versions_db='
 ';
 alias versions_git='
   echo "\e[36mgit \e[0m=> $(git --version)"
-  echo "\e[36mhub \e[0m=> $(hub --version)"
 ';
 alias versions_js='
   echo "\e[36mnode \e[0m=> $(node -v)"
   echo "\e[36mnpm \e[0m=> $(npm -v)"
-  echo "\e[36mbrunch \e[0m=> $(brunch -v)"
-  echo "\e[36mbower \e[0m=> $(bower -v)"
-  echo "\e[36mphantomjs \e[0m=> $(phantomjs -v)"
-  echo "\e[36member \e[0m=> $(ember -v | grep ember)"
 ';
 alias versions_ruby='
-  echo "\e[36mrbenv \e[0m=> $(rbenv -v)"
   echo "\e[36mruby \e[0m=> $(ruby -v)"
   echo "\e[36mgem \e[0m=> $(gem -v)"
   echo "\e[36mbundle\e[0m=> $(bundler -v)"
