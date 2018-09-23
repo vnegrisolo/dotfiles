@@ -46,6 +46,7 @@ gbcc() {
   branches=(`gb`)
   for i in $branches; do
     if [[ $i =~ ^(\\*|master)$ ]]; then
+      echo ""
     else
       echo "=> ${i}";
       git rev-list --left-right --count master...${i}
@@ -81,7 +82,6 @@ alias gcf='(gd --name-only; gdc --name-only; gd --name-only ..master; git ls-fil
 alias gcfd='(gd --name-only; gdc --name-only; gd --name-only ..develop; git ls-files --others --exclude-standard) | sort -u'
 
 alias cdv="cd ~/vfn/projects/vnegrisolo/"
-alias cdr="cd ~/vfn/projects/rekki/"
 
 alias dps='docker ps'
 alias dload='eval $(docker-machine env default)'
