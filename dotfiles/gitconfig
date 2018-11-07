@@ -1,6 +1,6 @@
 [user]
-	name = Vinicius Ferreira Negrisolo
-	email = vinicius.negrisolo@gmail.com
+  name = Vinicius Ferreira Negrisolo
+  email = vinicius.negrisolo@gmail.com
 [github]
   user = vnegrisolo
 [core]
@@ -36,7 +36,7 @@
   email = vinicius.negrisolo@gmail.com
   name = Vinicius Ferreira Negrisolo
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
