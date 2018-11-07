@@ -54,6 +54,15 @@ gstatistics() {
     git log --author="$author" --pretty=tformat: --numstat | awk '{inserted+=$1; deleted+=$2;} END {printf "  Added:   %5s\n  Removed: %5s\n", inserted, deleted }'
   done
 }
+gstatistics_between() {
+  after="$1"
+  before="$2"
+  git shortlog -sen --no-merges | cat
+  git shortlog -sen --no-merges | cat | awk '{ $1 = ""; printf "%s\n", $0 }' | while read -r author; do
+    echo "=> Author = \033[0;36m'$author'\033[0m"
+    git log --author="$author" --after="$after" --before="$before" --pretty=tformat: --numstat | awk '{inserted+=$1; deleted+=$2;} END {printf "  Added:   %5s\n  Removed: %5s\n", inserted, deleted }'
+  done
+}
 
 alias gap='git add -p'
 alias gnap='git add -N --ignore-removal . && gap && gref'
