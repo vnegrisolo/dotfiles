@@ -8,5 +8,3 @@ c_cyan="\[\033[36m\]"
 file="$HOME/.sh_exports";   if [[ -s $file ]] ; then source $file ; fi
 file="$HOME/.sh_aliases";   if [[ -s $file ]] ; then source $file ; fi
 file="$HOME/.bashrc.local"; if [[ -s $file ]] ; then source $file ; fi
-
-eval "$(rbenv init -)"
