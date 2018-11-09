@@ -59,6 +59,17 @@ gstatistics() {
   done
 }
 
+print_all_colors() {
+  for bg in {40..47} {100..107} 49; do
+    for clfg in {30..37} {90..97} 39; do
+      for attr in 0 1 2 4 5 7; do
+        echo -en "\033[${attr};${bg};${clfg}m[${attr};${bg};${clfg}m\033[0m  "
+      done
+      echo ""
+    done
+  done
+}
+
 alias gap='git add -p'
 alias gnap='git add -N --ignore-removal . && gap && gref'
 alias gb='git branch'
