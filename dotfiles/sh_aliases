@@ -48,19 +48,14 @@ gbcc() {
   done
 }
 gstatistics() {
-  git shortlog -sen --no-merges | cat
+  after="${1:-99 months ago}"
+  before="${2:-0 days ago}"
+
   git shortlog -sen --no-merges | cat | awk '{ $1 = ""; printf "%s\n", $0 }' | while read -r author; do
     echo "=> Author = \033[0;36m'$author'\033[0m"
-    git log --author="$author" --pretty=tformat: --numstat | awk '{inserted+=$1; deleted+=$2;} END {printf "  Added:   %5s\n  Removed: %5s\n", inserted, deleted }'
-  done
-}
-gstatistics_between() {
-  after="$1"
-  before="$2"
-  git shortlog -sen --no-merges | cat
-  git shortlog -sen --no-merges | cat | awk '{ $1 = ""; printf "%s\n", $0 }' | while read -r author; do
-    echo "=> Author = \033[0;36m'$author'\033[0m"
-    git log --author="$author" --after="$after" --before="$before" --pretty=tformat: --numstat | awk '{inserted+=$1; deleted+=$2;} END {printf "  Added:   %5s\n  Removed: %5s\n", inserted, deleted }'
+    commits_count=$(git log --no-merges --author="$author" --after="$after" --before="$before" --pretty=format:'%h' | cat | wc -l | tr -d '[:space:]')
+    printf "  Commits: %7s\n" "${commits_count}"
+    git log --no-merges --author="$author" --after="$after" --before="$before" --pretty=tformat: --numstat | awk '{inserted+=$1; deleted+=$2;} END {printf "  Added:   %7s\n  Removed: %7s\n", inserted, deleted }'
   done
 }
 
