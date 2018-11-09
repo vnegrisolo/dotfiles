@@ -2,32 +2,38 @@ alias l='ls -lah';
 alias grep='grep --color';
 alias open_file_system_to_web='ifconfig | grep 192.168; python -m SimpleHTTPServer 8998;';
 alias versions_db='
-  echo "\e[36minitdb \e[0m=> $(initdb --version)"
-  echo "\e[36mpsql \e[0m=> $(psql --version)"
-  echo "\e[36mpostgres \e[0m=> $(postgres --version)"
+  echo -e "\033[36minitdb \033[0m=> $(initdb --version)";
+  echo -e "\033[36mpsql \033[0m=> $(psql --version)";
+  echo -e "\033[36mpostgres \033[0m=> $(postgres --version)";
 ';
 alias versions_git='
-  echo "\e[36mgit \e[0m=> $(git --version)"
+  echo -e "\033[36mgit \033[0m=> $(git --version)";
 ';
 alias versions_js='
-  echo "\e[36mnode \e[0m=> $(node -v)"
-  echo "\e[36mnpm \e[0m=> $(npm -v)"
+  echo -e "\033[36mnode \033[0m=> $(node -v)";
+  echo -e "\033[36mnpm \033[0m=> $(npm -v)";
 ';
 alias versions_ruby='
-  echo "\e[36mruby \e[0m=> $(ruby -v)"
-  echo "\e[36mgem \e[0m=> $(gem -v)"
-  echo "\e[36mbundle\e[0m=> $(bundler -v)"
-  echo "\e[36mrake \e[0m=> $(rake --version)"
-  echo "\e[36mrails \e[0m=> $(rails -v)"
+  echo -e "\033[36mruby \033[0m=> $(ruby -v)";
+  echo -e "\033[36mgem \033[0m=> $(gem -v)";
+  echo -e "\033[36mbundle\033[0m=> $(bundler -v)";
+  echo -e "\033[36mrake \033[0m=> $(rake --version)";
+  echo -e "\033[36mrails \033[0m=> $(rails -v)";
 ';
 alias versions_elixir='
-  echo "\e[36merl \e[0m=> $(erl -version)"
-  echo "\e[36miex \e[0m=> $(iex --version)"
-  echo "\e[36mmix \e[0m=> $(mix --version)"
-  echo "\e[36melixir \e[0m=> $(elixir -v)"
-  echo "\e[36mphoenix \e[0m=> $(mix phx.new -v)"
+  echo -e "\033[36merl \033[0m=> $(erl -version)";
+  echo -e "\033[36miex \033[0m=> $(iex --version)";
+  echo -e "\033[36mmix \033[0m=> $(mix --version)";
+  echo -e "\033[36melixir \033[0m=> $(elixir -v)";
+  echo -e "\033[36mphoenix \033[0m=> $(mix phx.new -v)";
 ';
-alias versions='versions_db; versions_git; versions_js; versions_ruby; versions_elixir';
+alias versions='
+  versions_db
+  versions_git
+  versions_js
+  versions_ruby
+  versions_elixir
+';
 
 alias be='bundle exec';
 alias berm='bundle exec rake db:migrate db:migrate:redo db:test:prepare'
@@ -52,7 +58,7 @@ gstatistics() {
   before="${2:-0 days ago}"
 
   git shortlog -sen --no-merges | cat | awk '{ $1 = ""; printf "%s\n", $0 }' | while read -r author; do
-    echo "=> Author = \033[0;36m'$author'\033[0m"
+    echo -e "=> Author = \033[0;36m'$author'\033[0m"
     commits_count=$(git log --no-merges --author="$author" --after="$after" --before="$before" --pretty=format:'%h' | cat | wc -l | tr -d '[:space:]')
     printf "  Commits: %7s\n" "${commits_count}"
     git log --no-merges --author="$author" --after="$after" --before="$before" --pretty=tformat: --numstat | awk '{inserted+=$1; deleted+=$2;} END {printf "  Added:   %7s\n  Removed: %7s\n", inserted, deleted }'
@@ -94,10 +100,10 @@ alias cdv="cd ~/vfn/projects/vnegrisolo/"
 
 alias dps='docker ps'
 alias dclear='docker rm $(docker ps -a -q) && docker rmi $(docker images -q) && docker volume rm $(docker volume ls -q)'
-alias dlsn='echo "#=> \e[33mNETWORK\e[0m\n`docker network ls`"'
-alias dlsv='echo "#=> \e[33mVOLUMES\e[0m\n`docker volume ls`"'
-alias dlsi='echo "#=> \e[33mIMAGES\e[0m\n`docker images -a`"'
-alias dlsc='echo "#=> \e[33mCONTAINERS\e[0m\n`docker ps -a`"'
+alias dlsn='echo -e "#=> \033[33mNETWORK\033[0m\n`docker network ls`"'
+alias dlsv='echo -e "#=> \033[33mVOLUMES\033[0m\n`docker volume ls`"'
+alias dlsi='echo -e "#=> \033[33mIMAGES\033[0m\n`docker images -a`"'
+alias dlsc='echo -e "#=> \033[33mCONTAINERS\033[0m\n`docker ps -a`"'
 alias dls='
   dlsm
   dlsn
@@ -106,8 +112,8 @@ alias dls='
   dlsc
 '
 
-alias vim-update='cd ~/.vim/bundle/; for i in *; do; echo "UPDATING => \e[0;36m${i}\e[0m"; cd $i; gpr; cd ..; done'
-alias vim-install='mkdir -p ~/.vim/bundle/; cd ~/.vim/bundle/; for i in $(cat ~/.vimbundle); do; if [[ ! -e ${i#*/} ]]; then; echo "INSTALLING => \e[0;36m${i}\e[0m"; $(git clone https://github.com/${i}.git); fi; done'
+alias vim-update='cd ~/.vim/bundle/; for i in *; do; echo -e "UPDATING => \033[0;36m${i}\033[0m"; cd $i; gpr; cd ..; done'
+alias vim-install='mkdir -p ~/.vim/bundle/; cd ~/.vim/bundle/; for i in $(cat ~/.vimbundle); do; if [[ ! -e ${i#*/} ]]; then; echo -e "INSTALLING => \033[0;36m${i}\033[0m"; $(git clone https://github.com/${i}.git); fi; done'
 
 alias mux='_d=${PWD##*/}; _d=${_d//\./-}; echo $_d; tmux new -d -s $_d; tmux split-window -h; tmux split-window -v; tmux a'
 
