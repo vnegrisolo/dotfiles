@@ -127,3 +127,50 @@ pdf_listen() {
   pdftotext $1 $f
   say -f $f
 }
+
+to_dashcase(){
+  echo $1 | tr '[:upper:]' '[:lower:]' | tr '_' '-'
+}
+to_snakecase(){
+  to_dashcase $1 | tr '-' '_'
+}
+to_capitalcase(){
+  words=($(to_dashcase $1 | tr "-" "\n"))
+  new_words=""
+  for word in "${words[@]}"; do
+    word="$(tr '[:lower:]' '[:upper:]' <<< ${word:0:1})${word:1}"
+    new_words="$new_words$word"
+  done
+  echo "$new_words"
+}
+to_camelcase(){
+  capital="$(to_capitalcase $1)"
+  echo "$(tr '[:upper:]' '[:lower:]' <<< ${capital:0:1})${capital:1}"
+}
+
+xgenerator(){
+  generator=$1
+  dash="$(to_dashcase $2)"
+  snake="$(to_snakecase $2)"
+  capital="$(to_capitalcase $2)"
+  camel="$(to_camelcase $2)"
+
+  cp -R ~/.xgenerator/${generator} tmp-${generator}
+  files=($(find tmp-${generator} -type f))
+  for file in ${files[@]}; do
+    new_file="$(echo $file | sed -e "s/tmp-${generator}\///g" | sed -e "s/{{dash}}/${dash}/g" | sed -e "s/{{snake}}/${snake}/g" | sed -e "s/{{capital}}/${capital}/g" | sed -e "s/{{camel}}/${camel}/g")"
+    content="$(cat $file | sed -e "s/{{dash}}/${dash}/g" | sed -e "s/{{snake}}/${snake}/g" | sed -e "s/{{capital}}/${capital}/g" | sed -e "s/{{camel}}/${camel}/g")"
+
+    if [[ -e "$new_file" ]]; then
+      echo "=> File already exists: $new_file"
+      echo "=> This would be the content: <<<FILE"
+      echo $content
+      echo "FILE>>>"
+    else
+      echo "=> Generating: $new_file from ${file}"
+      mkdir -p $(dirname $new_file)
+      echo $content > $new_file
+    fi
+  done
+  rm -rf tmp-${generator}
+}

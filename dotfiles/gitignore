@@ -2,3 +2,4 @@
 .vagrant
 todo-vfn.md
 Procfile.vfn.*
+.elixir_ls/

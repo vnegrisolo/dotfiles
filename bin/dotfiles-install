@@ -41,6 +41,7 @@ link_file_to_home "dotfiles/psqlrc"       ".psqlrc"
 link_file_to_home "dotfiles/iex.exs"      ".iex.exs"
 
 link_file_to_home "bin"                   ".bin"
+link_file_to_home "dotfiles/xgenerator"   ".xgenerator"
 
 mkdir -p ~/.ssh
 link_file_to_home "dotfiles/ssh_config"   ".ssh/config"
