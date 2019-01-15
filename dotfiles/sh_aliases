@@ -154,12 +154,14 @@ xgenerator(){
   snake="$(to_snakecase $2)"
   capital="$(to_capitalcase $2)"
   camel="$(to_camelcase $2)"
+  folder="${3:-.}"
 
   cp -R ~/.xgenerator/${generator} tmp-${generator}
   files=($(find tmp-${generator} -type f))
   for file in ${files[@]}; do
-    new_file="$(echo $file | sed -e "s/tmp-${generator}\///g" | sed -e "s/{{dash}}/${dash}/g" | sed -e "s/{{snake}}/${snake}/g" | sed -e "s/{{capital}}/${capital}/g" | sed -e "s/{{camel}}/${camel}/g")"
-    content="$(cat $file | sed -e "s/{{dash}}/${dash}/g" | sed -e "s/{{snake}}/${snake}/g" | sed -e "s/{{capital}}/${capital}/g" | sed -e "s/{{camel}}/${camel}/g")"
+    new_file="$(echo $file | sed -e "s/tmp-${generator}\///g" | sed -e "s|{{folder}}|${folder}|g")"
+    new_file="$(echo $new_file | sed -e "s/{{dash}}/${dash}/g" | sed -e "s/{{snake}}/${snake}/g" | sed -e "s/{{capital}}/${capital}/g" | sed -e "s/{{camel}}/${camel}/g")"
+    content="$(cat $file       | sed -e "s/{{dash}}/${dash}/g" | sed -e "s/{{snake}}/${snake}/g" | sed -e "s/{{capital}}/${capital}/g" | sed -e "s/{{camel}}/${camel}/g")"
 
     if [[ -e "$new_file" ]]; then
       echo "=> File already exists: $new_file"
