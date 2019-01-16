@@ -1,4 +1,4 @@
-import {{capital}} from "./{{dash}}.jsx"
+import {{capital}} from "./{{capital}}.jsx"
 
 export default {
   {{capital}},
