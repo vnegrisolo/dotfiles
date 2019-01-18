@@ -15,35 +15,35 @@ function link_file_to_home {
   fi
 }
 
-link_file_to_home "dotfiles/sh_aliases"   ".sh_aliases"
-link_file_to_home "dotfiles/sh_exports"   ".sh_exports"
-link_file_to_home "dotfiles/bash_profile" ".bash_profile"
-link_file_to_home "dotfiles/bashrc"       ".bashrc"
-link_file_to_home "dotfiles/zshrc"        ".zshrc"
+link_file_to_home "dotfiles/sh_aliases"    ".sh_aliases"
+link_file_to_home "dotfiles/sh_exports"    ".sh_exports"
+link_file_to_home "dotfiles/bash_profile"  ".bash_profile"
+link_file_to_home "dotfiles/bashrc"        ".bashrc"
+link_file_to_home "dotfiles/zshrc"         ".zshrc"
 
-link_file_to_home "dotfiles/gitconfig"    ".gitconfig"
-link_file_to_home "dotfiles/gitignore"    ".gitignore"
-link_file_to_home "dotfiles/git-commit"   ".git-commit"
+link_file_to_home "dotfiles/gitconfig"     ".gitconfig"
+link_file_to_home "dotfiles/gitignore"     ".gitignore"
+link_file_to_home "dotfiles/git-commit"    ".git-commit"
 
 link_file_to_home "dotfiles/tool-versions" ".tool-versions"
 
-link_file_to_home "dotfiles/railsrc"      ".railsrc"
+link_file_to_home "dotfiles/railsrc"       ".railsrc"
 
-link_file_to_home "dotfiles/ctags"        ".ctags"
-link_file_to_home "dotfiles/vim"          ".vim"
-link_file_to_home "dotfiles/vimrc"        ".vimrc"
-link_file_to_home "dotfiles/vimbundle"    ".vimbundle"
+link_file_to_home "dotfiles/ctags"         ".ctags"
+link_file_to_home "dotfiles/vim"           ".vim"
+link_file_to_home "dotfiles/vimrc"         ".vimrc"
+link_file_to_home "dotfiles/vimbundle"     ".vimbundle"
 
-link_file_to_home "dotfiles/tmux.conf"    ".tmux.conf"
+link_file_to_home "dotfiles/tmux.conf"     ".tmux.conf"
 
-link_file_to_home "dotfiles/psqlrc"       ".psqlrc"
+link_file_to_home "dotfiles/psqlrc"        ".psqlrc"
 
-link_file_to_home "dotfiles/iex.exs"      ".iex.exs"
+link_file_to_home "dotfiles/iex.exs"       ".iex.exs"
 
-link_file_to_home "bin"                   ".bin"
-link_file_to_home "dotfiles/xgenerator"   ".xgenerator"
+link_file_to_home "bin"                    ".bin"
+link_file_to_home "dotfiles/xgenerator"    ".xgenerator"
 
 mkdir -p ~/.ssh
-link_file_to_home "dotfiles/ssh_config"   ".ssh/config"
+link_file_to_home "dotfiles/ssh_config"    ".ssh/config"
 
 exit 0
