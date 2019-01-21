@@ -7,6 +7,7 @@
   excludesfile = ~/.gitignore
   editor = vim
   whitespace = warn
+  attributesfile = ~/.gitattributes
 [color]
   diff = auto
   status = auto
@@ -40,3 +41,5 @@
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
   required = true
+[diff "image"]
+  textconv = imgcat
