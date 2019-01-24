@@ -43,13 +43,13 @@ gref() {
   command git --no-pager diff --cached --stat | command grep "|\s*0$" | awk '{system("command git reset " $1)}'
 }
 gbcc() {
-  branches=(`gb`)
-  for i in $branches; do
-    if [[ $i =~ ^(\\*|master)$ ]]; then
-      echo ""
-    else
-      echo "=> ${i}";
-      git rev-list --left-right --count master...${i}
+  base_branch=${1:-master}
+  branches=(`git branch --format "%(refname:short)"`)
+
+  for branch in $branches; do
+    if [[ $branch != $base_branch ]]; then
+      diff=$(git rev-list --left-right --count ${base_branch}...${branch})
+      echo "${diff}\t=> ${branch}"
     fi
   done
 }
