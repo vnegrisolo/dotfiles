@@ -42,4 +42,4 @@
   process = git-lfs filter-process
   required = true
 [diff "image"]
-  textconv = imgcat
+  command = imgdiff
