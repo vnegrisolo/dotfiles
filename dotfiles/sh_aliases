@@ -181,6 +181,9 @@ xgenerator(){
 img-compare(){
   img1="$1";
   img2="$2";
+
+  compare $img2 $img1 png:- | montage -geometry +4+4 $img2 - $img1 png:- | imgcat
+
   value=`compare -metric phash $img1 $img2 null: 2>&1`;
 
   if [ $(bc <<< "$value <= 0") -eq 1 ]; then
