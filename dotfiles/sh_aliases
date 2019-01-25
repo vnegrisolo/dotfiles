@@ -1,4 +1,7 @@
 alias l='ls -lah';
+l.() {
+  ls -ld "${1:-$PWD}"/.[^.]*
+}
 alias grep='grep --color';
 alias open_file_system_to_web='ifconfig | grep 192.168; python -m SimpleHTTPServer 8998;';
 alias versions_db='
