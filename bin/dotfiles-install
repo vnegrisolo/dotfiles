@@ -45,6 +45,7 @@ link_file_to_home "bin"                    ".bin"
 link_file_to_home "dotfiles/xgenerator"    ".xgenerator"
 
 mkdir -p ~/.ssh
+touch ~/.ssh/config.local
 link_file_to_home "dotfiles/ssh_config"    ".ssh/config"
 
 exit 0
