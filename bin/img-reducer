@@ -8,10 +8,9 @@ function help {
   echo -e ""
   echo -e "You will need:"
   echo -e "\t- brew install guetzli"
-  echo -e "\t- brew install libpng"
   echo -e "\t- brew install gifsicle"
-  echo -e "\t- git clone --recursive https://github.com/kornelski/pngquant.git ~/.pngquant && (cd ~/.pngquant && sudo make install)"
-  echo _e "\t- npm install -g svgo"
+  echo -e "\t- brew install pngquant"
+  echo -e "\t- npm install -g svgo"
 }
 
 function compare_images {
