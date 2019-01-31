@@ -16,16 +16,16 @@ function help {
 function compare_images {
   old_file="$1"
   new_file="$2"
-  threshold=$((100 * 1024))
+  threshold=20
 
   old_size=`ls -lan ${old_file} | awk '{print $5}'`
   new_size=`ls -lan ${new_file} | awk '{print $5}'`
-  diff_size=$(($old_size - $new_size))
+  improvement=$((100 * ($old_size - $new_size) / $old_size))
 
-  if [[ $diff_size -ge $threshold ]]; then
-    echo -e "$old_size\t$new_size\t$diff_size\t${old_file}"
+  if [[ $improvement -ge $threshold ]]; then
+    echo -e "$old_size\t$new_size\t-$improvement%\t${old_file}"
   else
-    echo -e "[DONT CARE] => $old_size\t$new_size\t$diff_size\t${old_file}"
+    echo -e "[DONT CARE] => $old_size\t$new_size\t-$improvement%\t${old_file}"
     rm $new_file
   fi
 }
