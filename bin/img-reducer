@@ -1,16 +1,20 @@
 #!/bin/bash
 
-folder="$1"
-
 function help {
-  echo -e "Usage:"
-  echo -e "\t$0 <folder>"
-  echo -e ""
-  echo -e "You will need:"
-  echo -e "\t- brew install guetzli"
-  echo -e "\t- brew install gifsicle"
-  echo -e "\t- brew install pngquant"
-  echo -e "\t- npm install -g svgo"
+  echo -e "USAGE:
+  img-reducer <file> [<file> ...]
+
+EXAMPLE:
+  find app/assets/ | xargs img-reducer
+  for of in `git status | grep -REDUCED`; do nf=${of/-REDUCED/}; open $of $nf; done
+
+REQUIREMENTS:
+    - brew install guetzli
+    - brew install gifsicle
+    - brew install pngquant
+    - npm install -g svgo"
+
+  exit -1
 }
 
 function compare_images {
@@ -30,25 +34,20 @@ function compare_images {
   fi
 }
 
-function compact_images_by_type {
-  type="$1"
-  for old_file in $(find $folder -type f | grep -i "\.${type}$"); do
-    new_file="${old_file%????}-REDUCED.${type}"
-    case "$1" in
-      png) pngquant $old_file -o $new_file ;;
-      gif) gifsicle --colors 256 -i < $old_file > $new_file ;;
-      svg) (svgo $old_file -o $new_file) > /dev/null ;;
-      *)   guetzli $old_file $new_file ;;
-    esac
-    compare_images "$old_file" "$new_file"
-  done
-}
+if (($# < 1)); then help; fi
 
-if (($# < 1 || $# > 1)); then echo "[ERROR] `help`"; exit -1; fi
+for old_file in "$@"; do
+  type="${old_file: -4}"
+  new_file="${old_file%????}-REDUCED${type}"
 
-for type in jpg png gif svg; do
-  echo "type=${type}"
-  compact_images_by_type "$type"
+  case "$type" in
+    .png) pngquant $old_file -o $new_file ;;
+    .gif) gifsicle --colors 256 -i < $old_file > $new_file ;;
+    .svg) (svgo $old_file -o $new_file) > /dev/null ;;
+    .jpg) guetzli $old_file $new_file ;;
+    *) continue ;;
+  esac
+  compare_images "$old_file" "$new_file"
 done
 
 exit 0
