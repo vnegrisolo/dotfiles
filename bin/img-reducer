@@ -5,8 +5,8 @@ function help {
   img-reducer <file> [<file> ...]
 
 EXAMPLE:
-  find app/assets/ | xargs img-reducer
-  for of in `git status | grep -REDUCED`; do nf=${of/-REDUCED/}; open $of $nf; done
+  find app/assets/ | xargs -n1 -P8 img-reducer
+  for of in \`git status | grep IMG_REDUCED\`; do nf=\${of/IMG_REDUCED*/}; open \${nf}*; done
 
 REQUIREMENTS:
     - brew install guetzli
@@ -27,18 +27,17 @@ function compare_images {
   improvement=$((100 * ($old_size - $new_size) / $old_size))
 
   if [[ $improvement -ge $threshold ]]; then
-    echo -e "$old_size\t$new_size\t-$improvement%\t${old_file}"
+    echo -e "$old_size\t$new_size\t-$improvement%\t${type}\t${old_file}"
   else
-    echo -e "[DONT CARE] => $old_size\t$new_size\t-$improvement%\t${old_file}"
     rm $new_file
   fi
 }
 
-if (($# < 1)); then help; fi
-
-for old_file in "$@"; do
-  type="${old_file: -4}"
-  new_file="${old_file%????}-REDUCED${type}"
+function compact_image {
+  old_file="$1"
+  type="$2"
+  [ -z "$type" ] && type="${old_file: -4}"
+  new_file="${old_file%????}IMG_REDUCED${type}"
 
   case "$type" in
     .png) pngquant $old_file -o $new_file ;;
@@ -48,6 +47,13 @@ for old_file in "$@"; do
     *) continue ;;
   esac
   compare_images "$old_file" "$new_file"
+  if [[ "$type" == ".png" ]]; then compact_image "$old_file" ".jpg"; fi
+}
+
+if (($# < 1)); then help; fi
+
+for old_file in "$@"; do
+  compact_image "$old_file"
 done
 
 exit 0
