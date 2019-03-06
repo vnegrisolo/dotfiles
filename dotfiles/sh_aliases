@@ -151,9 +151,18 @@ to_camelcase(){
 }
 
 xgenerator(){
-  generator=$1
+  if (($# < 2 || $# > 3)); then
+    echo "[ERROR] Usage:\n  xgenerator <generator> <name> [<folder>]";
+    echo ""
+    echo "Possible variables:";
+    echo "{{dash}}";
+    echo "{{snake}}";
+    echo "{{capital}}";
+    echo "{{camel}}";
+    return 0;
+  fi
 
-  if (($# < 2 || $# > 3)); then echo "[ERROR] Usage:\n  xgenerator <generator> <name> [<folder>]"; return 0; fi
+  generator=$1
   dash="$(to_dashcase $2)"
   snake="$(to_snakecase $2)"
   capital="$(to_capitalcase $2)"
@@ -169,9 +178,15 @@ xgenerator(){
 
     if [[ -e "$new_file" ]]; then
       echo "=> File already exists: $new_file"
-      echo "=> This would be the content: <<<FILE"
-      echo $content
-      echo "FILE>>>"
+      diff $new_file <(echo "$content")
+      if [[ $? -eq 1 ]]; then
+        read -q "REPLY?Do you want to overwrite? [y/n] "
+        echo ""
+        if [[ $REPLY =~ ^[Yy]$ ]]; then
+          echo "=> Overwriting: $new_file from ${file}"
+          echo $content > $new_file
+        fi
+      fi
     else
       echo "=> Generating: $new_file from ${file}"
       mkdir -p $(dirname $new_file)
