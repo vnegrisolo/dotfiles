@@ -184,7 +184,7 @@ xgenerator(){
       if [[ -e "$new_file" ]]; then
         echo "=> File already exists: $new_file"
         diff $new_file <(echo "$content")
-        if [[ $? -eq 1 ]]; then
+        if [[ $? -ne 0 ]]; then
           read -q "REPLY?Do you want to overwrite? [y/n] "
           echo ""
           if [[ $REPLY =~ ^[Yy]$ ]]; then
@@ -197,8 +197,17 @@ xgenerator(){
         echo $content > $new_file
       fi
     else
-      echo "=> Generating: $new_file from ${file}"
-      cp $file $new_file
+      if [[ -e "$new_file" ]]; then
+        echo "=> File already exists: $new_file"
+        diff $file $new_file
+        if [[ $? -ne 0 ]]; then
+          echo "=> Overwriting: $new_file from ${file}"
+          cp $file $new_file
+        fi
+      else
+        echo "=> Generating: $new_file from ${file}"
+        cp $file $new_file
+      fi
     fi
   done
   rm -rf tmp-${generator}
