@@ -1,3 +1,3 @@
-# {{snake}}
+# {{name-snake}}
 
 TODO: write something here

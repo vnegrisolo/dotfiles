@@ -2,33 +2,39 @@ alias l='ls -lah';
 l.() {
   ls -ld "${1:-$PWD}"/.[^.]*
 }
+log() {
+  echo -e "\033[36m${1} \033[0m=> ${2}";
+}
+log_error() {
+  echo -e "\033[31m[ERROR] \033[0m=> ${1}";
+}
 alias grep='grep --color';
 alias open_file_system_to_web='ifconfig | grep 192.168; python -m SimpleHTTPServer 8998;';
 alias versions_db='
-  echo -e "\033[36minitdb \033[0m=> $(initdb --version)";
-  echo -e "\033[36mpsql \033[0m=> $(psql --version)";
-  echo -e "\033[36mpostgres \033[0m=> $(postgres --version)";
+  log initdb "$(initdb --version)";
+  log psql "$(psql --version)";
+  log postgres "$(postgres --version)";
 ';
 alias versions_git='
-  echo -e "\033[36mgit \033[0m=> $(git --version)";
+  log git "$(git --version)";
 ';
 alias versions_js='
-  echo -e "\033[36mnode \033[0m=> $(node -v)";
-  echo -e "\033[36mnpm \033[0m=> $(npm -v)";
+  log node "$(node -v)";
+  log npm "$(npm -v)";
 ';
 alias versions_ruby='
-  echo -e "\033[36mruby \033[0m=> $(ruby -v)";
-  echo -e "\033[36mgem \033[0m=> $(gem -v)";
-  echo -e "\033[36mbundle\033[0m=> $(bundler -v)";
-  echo -e "\033[36mrake \033[0m=> $(rake --version)";
-  echo -e "\033[36mrails \033[0m=> $(rails -v)";
+  log ruby "$(ruby -v)";
+  log gem "$(gem -v)";
+  log bundle "$(bundler -v)";
+  log rake "$(rake --version)";
+  log rails "$(rails -v)";
 ';
 alias versions_elixir='
-  echo -e "\033[36merl \033[0m=> $(erl -version)";
-  echo -e "\033[36miex \033[0m=> $(iex --version)";
-  echo -e "\033[36mmix \033[0m=> $(mix --version)";
-  echo -e "\033[36melixir \033[0m=> $(elixir -v)";
-  echo -e "\033[36mphoenix \033[0m=> $(mix phx.new -v)";
+  log erl "$(erl -version)";
+  log iex "$(iex --version)";
+  log mix "$(mix --version)";
+  log elixir "$(elixir -v)";
+  log phoenix "$(mix phx.new -v)";
 ';
 alias versions='
   versions_db
@@ -150,67 +156,90 @@ to_camelcase(){
   echo "$(tr '[:upper:]' '[:lower:]' <<< ${capital:0:1})${capital:1}"
 }
 
+evaluate_template(){
+  template="$1"
+  name="$2"
+  value="$3"
+
+  dash="$(to_dashcase $value)"
+  snake="$(to_snakecase $value)"
+  capital="$(to_capitalcase $value)"
+  camel="$(to_camelcase $value)"
+
+  echo $template | \
+    sed -e "s|{{${name}}}|${value}|g" | \
+    sed -e "s|{{${name}-dash}}|${dash}|g" | \
+    sed -e "s|{{${name}-snake}}|${snake}|g" | \
+    sed -e "s|{{${name}-capital}}|${capital}|g" | \
+    sed -e "s|{{${name}-camel}}|${camel}|g";
+}
+
 xgenerator(){
-  if (($# < 2 || $# > 3)); then
-    echo "[ERROR] Usage:\n  xgenerator <generator> <name> [<folder>]";
-    echo ""
-    echo "Possible variables:";
-    echo "{{dash}}";
-    echo "{{snake}}";
-    echo "{{capital}}";
-    echo "{{camel}}";
+  if (($# < 1)); then
+    log_error "Usage:\n";
+    echo "  xgenerator <generator> [<name>=<value> ...]";
+    echo "";
+    echo "Example:";
+    echo "  xgenerator chrome-plugin name=<NAME>";
+    echo "  xgenerator makefile";
+    echo "  xgenerator react folder=<FOLDER> name=<NAME>";
     return 0;
   fi
 
-  generator=$1
-  dash="$(to_dashcase $2)"
-  snake="$(to_snakecase $2)"
-  capital="$(to_capitalcase $2)"
-  camel="$(to_camelcase $2)"
-  folder="${3:-.}"
+  generator=$1;
 
-  cp -R ~/.xgenerator/${generator} tmp-${generator}
-  files=($(find tmp-${generator} -type f))
+  shift;
+  cp -R ~/.xgenerator/${generator} tmp-${generator};
+  files=($(find tmp-${generator} -type f));
   for file in ${files[@]}; do
-    file_type=$(file -b --mime-type "${file}" | sed 's|/.*||')
+    file_type=$(file -b --mime-type "${file}" | sed 's|/.*||');
 
-    new_file="$(echo $file | sed -e "s/tmp-${generator}\///g" | sed -e "s|{{folder}}|${folder}|g")"
-    new_file="$(echo $new_file | sed -e "s/{{dash}}/${dash}/g" | sed -e "s/{{snake}}/${snake}/g" | sed -e "s/{{capital}}/${capital}/g" | sed -e "s/{{camel}}/${camel}/g")"
-    mkdir -p $(dirname $new_file)
+    new_file="$(echo $file | sed -e "s/tmp-${generator}\///g")";
+    for var in "$@"; do
+      name="${var%%=*}";
+      value="${var#*=}";
+      new_file=$(evaluate_template "${new_file}" $name $value);
+    done
+    mkdir -p $(dirname $new_file);
 
     if [[ "${file_type}" = "text" ]]; then
-      content="$(cat $file | sed -e "s/{{dash}}/${dash}/g" | sed -e "s/{{snake}}/${snake}/g" | sed -e "s/{{capital}}/${capital}/g" | sed -e "s/{{camel}}/${camel}/g")"
+      content="$(cat $file)";
+      for var in "$@"; do
+        name="${var%%=*}";
+        value="${var#*=}";
+        content=$(evaluate_template "${content}" $name $value);
+      done
 
       if [[ -e "$new_file" ]]; then
-        echo "=> File already exists: $new_file"
-        diff $new_file <(echo "$content")
+        echo "=> File already exists: $new_file";
+        diff $new_file <(echo "$content");
         if [[ $? -ne 0 ]]; then
-          read -q "REPLY?Do you want to overwrite? [y/n] "
-          echo ""
+          read -q "REPLY?Do you want to overwrite? [y/n] ";
+          echo "";
           if [[ $REPLY =~ ^[Yy]$ ]]; then
-            echo "=> Overwriting: $new_file from ${file}"
-            echo $content > $new_file
+            echo "=> Overwriting: $new_file from ${file}";
+            echo $content > $new_file;
           fi
         fi
       else
-        echo "=> Generating: $new_file from ${file}"
-        echo $content > $new_file
+        echo "=> Generating: $new_file from ${file}";
+        echo $content > $new_file;
       fi
     else
       if [[ -e "$new_file" ]]; then
-        echo "=> File already exists: $new_file"
-        diff $file $new_file
+        echo "=> File already exists: $new_file";
+        diff $file $new_file;
         if [[ $? -ne 0 ]]; then
-          echo "=> Overwriting: $new_file from ${file}"
-          cp $file $new_file
+          echo "=> Overwriting: $new_file from ${file}";
+          cp $file $new_file;
         fi
       else
-        echo "=> Generating: $new_file from ${file}"
-        cp $file $new_file
+        echo "=> Generating: $new_file from ${file}";
+        cp $file $new_file;
       fi
     fi
   done
-  rm -rf tmp-${generator}
+  rm -rf tmp-${generator};
 }
 
 img-compare(){

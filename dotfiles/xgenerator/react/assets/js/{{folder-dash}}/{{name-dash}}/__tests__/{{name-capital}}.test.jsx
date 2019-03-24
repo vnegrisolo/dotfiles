@@ -1,8 +1,8 @@
 import React from "react"
 import { shallow } from "enzyme"
-import {{capital}} from "../{{capital}}.jsx"
+import {{name-capital}} from "../{{name-capital}}.jsx"
 
 it("renders component", () => {
-  const component = shallow(<{{capital}} />)
+  const component = shallow(<{{name-capital}} />)
   expect(component).toMatchSnapshot()
 })
