@@ -5,8 +5,6 @@ include .env
 
 HELP_PADDING = 20
 
-.env.example:
-	touch .env.example
 .env:
 	cp .env.example .env
 

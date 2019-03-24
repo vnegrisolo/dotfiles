@@ -165,8 +165,8 @@ to_camelcase(){
 
 evaluate_template(){
   template="$1"
-  name="$2"
-  value="$3"
+  name="${2%%=*}";
+  value="${2#*=}";
 
   dash="$(to_dashcase $value)"
   snake="$(to_snakecase $value)"
@@ -188,9 +188,10 @@ xgenerator(){
     echo "";
     echo "Example:";
     echo "  xgenerator chrome-plugin name=<NAME>";
-    echo "  xgenerator makefile elixir-library";
-    echo "  xgenerator makefile elixir-phoenix";
+    echo "  xgenerator makefile-elixir-library";
+    echo "  xgenerator makefile-elixir-phoenix";
     echo "  xgenerator react folder=<FOLDER> name=<NAME>";
+    echo "  xgenerator shell-script name=<NAME>";
     return 0;
   fi
 
@@ -204,18 +205,14 @@ xgenerator(){
 
     new_file="$(echo $file | sed -e "s/tmp-${generator}\///g")";
     for var in "$@"; do
-      name="${var%%=*}";
-      value="${var#*=}";
-      new_file=$(evaluate_template "${new_file}" $name $value);
+      new_file=$(evaluate_template "${new_file}" $var);
     done
     mkdir -p $(dirname $new_file);
 
     if [[ "${file_type}" = "text" ]]; then
       content="$(cat $file)";
       for var in "$@"; do
-        name="${var%%=*}";
-        value="${var#*=}";
-        content=$(evaluate_template "${content}" $name $value);
+        content=$(evaluate_template "${content}" $var);
       done
 
       if [[ -e "$new_file" ]]; then
