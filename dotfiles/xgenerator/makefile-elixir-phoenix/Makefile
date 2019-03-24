@@ -1,10 +1,12 @@
 #!make
 include .env
 
-.PHONY: help console outdated outdated-asdf setup setup-prod server server-prod test update-mix update-npm
+.PHONY: help console outdated setup setup-prod server server-prod test update-mix update-npm
 
 HELP_PADDING = 20
 
+.env.example:
+	touch .env.example
 .env:
 	cp .env.example .env
 
@@ -25,12 +27,6 @@ console: ## Opens the App console.
 outdated: ## Shows outdated packages.
 	mix hex.outdated
 	npm --prefix=assets/ outdated
-
-outdated-asdf: ## Shows outdated asdf packages.
-	asdf update
-	asdf plugin-update --all
-	(asdf current > /dev/null) 2>&1 | awk '{print $$1;}' | while read -r i; do asdf list-all $${i} > $${i}.versions; done
-	asdf current
 
 setup: ## Setup the App.
 	mix deps.get
@@ -63,11 +59,11 @@ server-prod: ## Start the App server for prod.
 test: ## Run the test suite.
 test: setup
 	mix format
-	mix credo
+	MIX_ENV=test mix credo
 	rm -rf screenshots/*
 	mix test --trace --cover
 	npm --prefix=assets/ test
-	mix dialyzer
+	MIX_ENV=test mix dialyzer
 
 update-mix: ## Update mix packages.
 	mix deps.update --all
