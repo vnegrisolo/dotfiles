@@ -28,6 +28,7 @@ outdated: ## Shows outdated packages.
 
 setup: ## Setup the App.
 	mix deps.get
+	mix deps.unlock --unused
 	mix compile
 	mix gettext.extract --merge --no-fuzzy
 	mix ecto.setup
@@ -36,6 +37,7 @@ setup: ## Setup the App.
 setup-prod: export MIX_ENV=prod
 setup-prod: ## Setup the App for prod.
 	mix deps.get
+	mix deps.unlock --unused
 	mix compile
 	mix gettext.extract --merge --no-fuzzy
 	mix ecto.setup
