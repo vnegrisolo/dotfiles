@@ -188,6 +188,7 @@ xgenerator(){
     echo "";
     echo "Example:";
     echo "  xgenerator chrome-plugin name=<NAME>";
+    echo "  xgenerator elixir-mix-task name=<NAME>";
     echo "  xgenerator makefile-elixir-library";
     echo "  xgenerator makefile-elixir-phoenix";
     echo "  xgenerator react folder=<FOLDER> name=<NAME>";
