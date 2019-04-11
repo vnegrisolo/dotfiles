@@ -70,6 +70,14 @@ gbcc() {
     fi
   done
 }
+gbcc-remote() {
+  remote=${1:-origin}
+  branches=(`git branch --format "%(refname:short)"`)
+
+  for branch in $branches; do
+    gbcc "$remote/$branch" | grep $branch
+  done
+}
 gstatistics() {
   after="${1:-99 months ago}"
   before="${2:-0 days ago}"
