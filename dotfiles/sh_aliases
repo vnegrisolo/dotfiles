@@ -65,8 +65,8 @@ gbcc() {
 
   for branch in $branches; do
     if [[ $branch != $base_branch ]]; then
-      diff=$(git rev-list --left-right --count ${base_branch}...${branch})
-      echo "${diff}\t=> ${branch}"
+      diff=$(git rev-list --left-right --no-merges --count ${base_branch}...${branch})
+      echo "${diff}\t=> ${base_branch}..${branch}"
     fi
   done
 }
@@ -75,7 +75,7 @@ gbcc-remote() {
   branches=(`git branch --format "%(refname:short)"`)
 
   for branch in $branches; do
-    gbcc "$remote/$branch" | grep $branch
+    gbcc "$remote/$branch" | grep "$branch$"
   done
 }
 gstatistics() {
