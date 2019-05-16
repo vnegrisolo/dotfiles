@@ -9,6 +9,7 @@ log_error() {
   echo -e "\033[31m[ERROR] \033[0m=> ${1}";
 }
 alias grep='grep --color';
+alias clear='clear && printf "\e[3J"';
 alias open_file_system_to_web='ifconfig | grep 192.168; python -m SimpleHTTPServer 8998;';
 alias versions_db='
   log initdb "$(initdb --version)";
