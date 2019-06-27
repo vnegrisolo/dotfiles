@@ -3,30 +3,22 @@ include .env
 
 .PHONY: help console outdated setup setup-prod server server-prod test update-mix update-npm
 
-HELP_PADDING = 20
+HELP_START=": \#"
+HELP_PADDING=11
+help: # Shows this help.
+	@grep ${HELP_START} $(MAKEFILE_LIST) | awk -F ${HELP_START} '{printf "\\033[33m%-${HELP_PADDING}s\\033[0m %s\\n", $$1, $$2}' | sort
 
 .env:
 	cp .env.example .env
 
-help: ## Shows this help.
-	@IFS=$$'\\n' ; \
-	help_lines=(`fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//'`); \
-	for help_line in $${help_lines[@]}; do \
-			IFS=$$'#' ; \
-			help_split=($$help_line) ; \
-			help_command=`echo $${help_split[0]} | sed -e 's/^ *//' -e 's/ *$$//'` ; \
-			help_info=`echo $${help_split[2]} | sed -e 's/^ *//' -e 's/ *$$//'` ; \
-			printf "%-$(HELP_PADDING)s %s\\n" $$help_command $$help_info ; \
-	done
-
-console: ## Opens the App console.
+console: # Opens the App console.
 	iex -S mix
 
-outdated: ## Shows outdated packages.
+outdated: # Shows outdated packages.
 	mix hex.outdated
 	npm --prefix=assets/ outdated
 
-setup: ## Setup the App.
+setup: # Setup the App.
 	mix deps.get
 	mix deps.unlock --unused
 	mix compile
@@ -34,8 +26,8 @@ setup: ## Setup the App.
 	mix ecto.setup
 	cd assets/ && npm install && node node_modules/webpack/bin/webpack.js --mode development
 
+setup-prod: # Setup the App for prod.
 setup-prod: export MIX_ENV=prod
-setup-prod: ## Setup the App for prod.
 	mix deps.get
 	mix deps.unlock --unused
 	mix compile
@@ -44,19 +36,19 @@ setup-prod: ## Setup the App for prod.
 	rm -rf priv/static/ && cd assets/ && npm install && node node_modules/webpack/bin/webpack.js --mode production
 	mix phx.digest
 
+server: # Start the App server.
 server: setup
-server: ## Start the App server.
 	(sleep 3 && open http://localhost:4000/) &
 	mix phx.server
 
+server-prod: # Start the App server for prod.
 server-prod: export MIX_ENV=prod
 server-prod: export PORT=4001
 server-prod: setup-prod
-server-prod: ## Start the App server for prod.
 	(sleep 3 && open http://localhost:4001/) &
 	mix phx.server
 
-test: ## Run the test suite.
+test: # Run the test suite.
 test: setup
 	mix format
 	MIX_ENV=test mix credo
@@ -65,8 +57,8 @@ test: setup
 	npm --prefix=assets/ test
 	MIX_ENV=test mix dialyzer
 
-update-mix: ## Update mix packages.
+update-mix: # Update mix packages.
 	mix deps.update --all
 
-update-npm: ## Update npm packages.
+update-npm: # Update npm packages.
 	cd assets/ && npm update && npm install

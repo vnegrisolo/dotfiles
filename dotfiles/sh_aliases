@@ -218,7 +218,7 @@ xgenerator(){
     echo "  xgenerator elixir-mix-task name=<NAME>";
     echo "  xgenerator makefile-elixir-library";
     echo "  xgenerator makefile-elixir-phoenix";
-    echo "  xgenerator makefile-react-native-expo";
+    echo "  xgenerator makefile-react-native";
     echo "  xgenerator react folder=<FOLDER> name=<NAME>";
     echo "  xgenerator shell-script name=<NAME>";
     return 0;
