@@ -3,10 +3,8 @@ include .env
 
 .PHONY: help console outdated setup setup-prod server server-prod test update-mix update-npm
 
-HELP_START=": \#"
-HELP_PADDING=11
 help: # Shows this help.
-	@grep ${HELP_START} $(MAKEFILE_LIST) | awk -F ${HELP_START} '{printf "\\033[33m%-${HELP_PADDING}s\\033[0m %s\\n", $$1, $$2}' | sort
+	@grep ": \#" ${MAKEFILE_LIST} | column -t -s ':' | sort
 
 .env:
 	cp .env.example .env
@@ -53,7 +51,7 @@ test: setup
 	mix format
 	MIX_ENV=test mix credo
 	rm -rf screenshots/*
-	mix test --trace --cover
+	mix test
 	npm --prefix=assets/ test
 	MIX_ENV=test mix dialyzer
 

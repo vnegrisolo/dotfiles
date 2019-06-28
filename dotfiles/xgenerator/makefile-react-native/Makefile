@@ -1,10 +1,8 @@
 #!make
 .PHONY: help outdated update setup test run-android run-ios link
 
-HELP_START=": \#"
-HELP_PADDING=11
 help: # Shows this help.
-	@grep ${HELP_START} $(MAKEFILE_LIST) | awk -F ${HELP_START} '{printf "\\033[33m%-${HELP_PADDING}s\\033[0m %s\\n", $$1, $$2}' | sort
+	@grep ": \#" ${MAKEFILE_LIST} | column -t -s ':' | sort
 
 outdated: # Shows outdated packages.
 	yarn outdated

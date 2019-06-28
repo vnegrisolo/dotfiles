@@ -1,10 +1,8 @@
 #!make
 .PHONY: help console docs deploy outdated setup test update-mix
 
-HELP_START=": \#"
-HELP_PADDING=11
 help: # Shows this help.
-	@grep ${HELP_START} $(MAKEFILE_LIST) | awk -F ${HELP_START} '{printf "\\033[33m%-${HELP_PADDING}s\\033[0m %s\\n", $$1, $$2}' | sort
+	@grep ": \#" ${MAKEFILE_LIST} | column -t -s ':' | sort
 
 console: # Opens the App console.
 	iex -S mix
@@ -22,7 +20,7 @@ test: # Run the test suite.
 test: setup
 	mix format
 	MIX_ENV=test mix credo
-	mix test --trace --cover
+	mix test
 	MIX_ENV=test mix dialyzer
 
 docs: # Generate documentation.
