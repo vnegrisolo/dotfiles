@@ -11,7 +11,7 @@ outdated: # Shows outdated packages.
 update: # Update dependencies.
 	yarn && yarn upgrade && yarn
 
-setup: # Setup the App.
+setup: # Setup the app.
 	yarn
 
 test: # Run the test suite.
@@ -20,11 +20,11 @@ test: setup
 	yarn tsc
 	yarn test
 
-run-android: # Run Android App
+run-android: # Run Android app
 	emulator -avd Nexus_5X_API_28_x86 &
 	react-native run-android
 
-run-ios: # Run iOS App
+run-ios: # Run iOS app
 	react-native run-ios
 
 link: # Run ReactNative links again

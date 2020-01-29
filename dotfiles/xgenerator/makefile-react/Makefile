@@ -1,5 +1,5 @@
 #!make
-.PHONY: help outdated update setup test server
+.PHONY: help outdated update setup test start
 
 help: # Shows this help.
 	@grep ": \#" ${MAKEFILE_LIST} | column -t -s ':' | sort
@@ -11,7 +11,7 @@ outdated: # Shows outdated packages.
 update: # Update dependencies.
 	yarn && yarn upgrade && yarn
 
-setup: # Setup the App.
+setup: # Setup the app.
 	yarn
 
 test: # Run the test suite.
@@ -20,5 +20,5 @@ test: setup
 	yarn tsc
 	yarn test
 
-server: # Run Server
+start: # Start the app.
 	yarn start

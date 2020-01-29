@@ -4,14 +4,14 @@
 help: # Shows this help.
 	@grep ": \#" ${MAKEFILE_LIST} | column -t -s ':' | sort
 
-console: # Opens the App console.
+console: # Opens the app console.
 	iex -S mix
 
 outdated: # Shows outdated packages.
 	mix hex.outdated
 	npm --prefix=assets/ outdated
 
-setup: # Setup the App.
+setup: # Setup the app.
 	mix deps.get
 	mix deps.unlock --unused
 	mix compile
