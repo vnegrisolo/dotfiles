@@ -119,6 +119,25 @@ print_all_colors() {
   done
 }
 
+sshhr() {
+  if (($# < 1)); then
+    log_error "Usage:\n";
+    echo "  $0 <host> [port1] [port2] ...";
+    return 0;
+  fi
+
+  host=$1;
+  shift;
+
+  ports=("5900" "$@");
+  fwd_ports=""
+  for port in "$ports[@]"; do
+    fwd_ports="-L ${port}:localhost:${port} ${fwd_ports}"
+  done
+
+  eval "ssh ${fwd_ports}${host}";
+}
+
 alias gap='git add -p'
 alias gnap='git add -N --ignore-removal . && gap && gref'
 alias gb='git branch'
