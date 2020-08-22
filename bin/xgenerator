@@ -1,0 +1,91 @@
+#!/usr/bin/env ruby
+
+class XGenerator
+  DIR = "#{Dir.home}/.xgenerator"
+
+  attr_reader :generator, :params
+
+  def initialize(args)
+    @generator = args.shift
+    @params = args.map { |arg| arg.split("=") }
+  end
+
+  def run
+    return usage if !all_generators.include?(generator)
+
+    generate(".")
+
+  end
+
+  def generate(file)
+    origin = "#{DIR}/#{generator}/#{file}"
+
+    if File.directory?(origin)
+      destination = parse(file)
+
+      if Dir.exists?(destination)
+        puts "Folder exists already: #{destination}" if destination != "."
+      else
+        puts "Creating folder: #{destination}"
+        Dir.mkdir(destination)
+      end
+
+      list_dir(origin).each do |f|
+        generate("#{file}/#{f}")
+      end
+    else
+      destination = parse(file)
+      type = `file -b --mime-type "#{origin}" | sed 's|/.*||'`.strip
+      actions = File.exists?(destination) ? "Overwriting" : "Creating"
+
+      if type == "text"
+        puts "#{actions} text file: #{destination}"
+        content = File.open(origin).read
+        parsed_content = parse(content)
+        File.write(destination, parsed_content)
+      else
+        puts "#{actions} binary file: #{destination}"
+        FileUtils.cp(origin, destination)
+      end
+    end
+  end
+
+  def parse(string)
+    params.reduce(string) do |string, param|
+      name, value = param
+      value_dash = value.downcase.gsub("_", "-")
+      value_snake = value_dash.gsub("-", "_")
+      value_capital = value_dash.split("-").map{|word| "#{word[0].upcase}#{word[1..-1]}"}.join("")
+      value_camel = "#{value_capital[0].downcase}#{value_capital[1..-1]}"
+
+      string
+        .gsub("{{#{name}}}", value)
+        .gsub("{{#{name}-dash}}", value_dash)
+        .gsub("{{#{name}-snake}}", value_snake)
+        .gsub("{{#{name}-capital}}", value_capital)
+        .gsub("{{#{name}-camel}}", value_camel)
+    end
+  end
+
+  def all_generators
+    list_dir(DIR)
+  end
+
+  def list_dir(directory)
+    Dir.entries(directory).reject{|f| f == "." || f == ".." }
+  end
+
+  def usage
+    puts <<~USAGE
+    Usage:
+      xgenerator <generator> [<name1>=<value1> <name2>=<value2> ...]
+
+    * Use dashes or underscores to join multi-word-values.
+
+    Available Generators:
+    #{all_generators.map { |generator| "  xgenerator #{generator}" }.join("\n")}
+    USAGE
+  end
+end
+
+XGenerator.new(ARGV).run
