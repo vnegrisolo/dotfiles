@@ -60,25 +60,30 @@ asdf-update() {
 gref() {
   command git --no-pager diff --cached --stat | command grep "|\s*0$" | awk '{system("command git reset " $1)}'
 }
+
 gbcc() {
   base_branch=${1:-master}
+  remote=${2:-origin}
   branches=(`git branch --format "%(refname:short)"`)
 
-  for branch in $branches; do
-    if [[ $branch != $base_branch ]]; then
-      diff=$(git rev-list --left-right --no-merges --count ${base_branch}...${branch})
-      echo "${diff}\t=> ${base_branch}..${branch}"
-    fi
-  done
-}
-gbcc-remote() {
-  remote=${1:-origin}
-  branches=(`git branch --format "%(refname:short)"`)
+  (
+    diff_branches="${remote}/${base_branch}...${base_branch}"
+    diff=$(git rev-list --left-right --no-merges --count ${diff_branches})
+    echo "${diff}\t${diff_branches}"
 
-  for branch in $branches; do
-    gbcc "$remote/$branch" | grep "$branch$"
-  done
+    for branch in $branches; do
+      if [[ $branch != $base_branch ]]; then
+        diff_branches="${base_branch}...${branch}"
+        diff=$(git rev-list --left-right --no-merges --count ${diff_branches})
+
+        diff_branches_remote="${remote}/${branch}...${branch}"
+        diff_remote=$(git rev-list --left-right --no-merges --count ${diff_branches_remote})
+        echo "${diff}\t${diff_branches}\t${diff_remote}\t${diff_branches_remote}"
+      fi
+    done
+  ) | column -ts $'\t'
 }
+
 gstatistics() {
   after="${1:-99 months ago}"
   before="${2:-0 days ago}"
