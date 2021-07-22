@@ -140,6 +140,7 @@ sshhr() {
     fwd_ports="-L ${port}:localhost:${port} ${fwd_ports}"
   done
 
+  (sleep 3 && open vnc://dev@localhost:5900) &;
   eval "ssh ${fwd_ports}${host}";
 }
 
