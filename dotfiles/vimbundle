@@ -50,7 +50,6 @@ exu/pgsql.vim
 altercation/vim-colors-solarized
 mustache/vim-mustache-handlebars
 rking/ag.vim
-garbas/vim-snipmate
 marcweber/vim-addon-mw-utils
 tomtom/tlib_vim
 honza/vim-snippets
