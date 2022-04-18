@@ -1,0 +1,12 @@
+[
+  {
+    "key": "cmd+ctrl+t",
+    "command": "workbench.action.tasks.runTask",
+    "args": "Run Test File"
+  },
+  {
+    "key": "cmd+ctrl+l",
+    "command": "workbench.action.tasks.runTask",
+    "args": "Run Test Line"
+  }
+]
