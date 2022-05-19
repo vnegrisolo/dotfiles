@@ -7,7 +7,6 @@ file="$HOME/.sh_exports";  if [[ -s $file ]] ; then source $file ; fi
 file="$HOME/.sh_aliases";  if [[ -s $file ]] ; then source $file ; fi
 file="$HOME/.zshrc.local"; if [[ -s $file ]] ; then source $file ; fi
 
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
-
 export ERL_AFLAGS="-kernel shell_history enabled"
+
+. /usr/local/opt/asdf/libexec/asdf.sh

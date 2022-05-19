@@ -35,8 +35,6 @@ link_file_to_home "dotfiles/vim"           ".vim"
 link_file_to_home "dotfiles/vimrc"         ".vimrc"
 link_file_to_home "dotfiles/vimbundle"     ".vimbundle"
 
-link_file_to_home "dotfiles/tmux.conf"     ".tmux.conf"
-
 link_file_to_home "dotfiles/psqlrc"        ".psqlrc"
 
 link_file_to_home "dotfiles/iex.exs"       ".iex.exs"
