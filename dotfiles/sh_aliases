@@ -169,7 +169,6 @@ alias glod='git log --oneline --decorate'
 alias gp='git push'
 alias gplease='git push --force-with-lease'
 alias gpr='git pull --rebase'
-alias gprm='gpr; git fetch -p; echo "merged with main:"; git branch --merged main'
 alias gprmd='gpr; git fetch -p; echo "merged with develop:"; git branch --merged develop'
 alias gst='git status'
 alias reset-authors='git commit --amend --reset-author -C HEAD'
@@ -177,6 +176,7 @@ alias gcf='(gd --name-only; gdc --name-only; gd --name-only ..main; git ls-files
 alias gcfd='(gd --name-only; gdc --name-only; gd --name-only ..develop; git ls-files --others --exclude-standard) | sort -u'
 
 alias cdv="cd ~/vfn/projects/vnegrisolo/"
+alias cdh="cd ~/vfn/projects/hashrocket/"
 
 alias dps='docker ps'
 alias dclear='docker rm $(docker ps -a -q) && docker rmi $(docker images -q) && docker volume rm $(docker volume ls -q)'

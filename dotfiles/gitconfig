@@ -44,3 +44,5 @@
 [diff "image"]
   textconv = imgcat
   command = imgdiff
+[init]
+	defaultBranch = main
