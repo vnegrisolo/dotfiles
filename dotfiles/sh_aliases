@@ -37,6 +37,8 @@ alias versions_elixir='
   log elixir "$(elixir -v)";
   log phoenix "$(mix phx.new -v)";
 ';
+alias mt='mix test --trace';
+alias mf='mix format';
 alias versions='
   versions_db
   versions_git
