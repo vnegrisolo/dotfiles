@@ -10,6 +10,19 @@
 
 # Setup in Mac
 
+- [Homebrew](https://brew.sh/)
+- [Postgres.app](https://postgresapp.com/)
+
+```shell
+brew install --cask google-chrome
+brew install --cask iterm2
+brew install --cask postico
+brew install --cask slack
+brew install --cask visual-studio-code
+brew install --cask zoom
+brew install --cask 1password
+```
+
 ```shell
 brew install asdf
 brew install bat
@@ -18,18 +31,9 @@ brew install git
 brew install htop
 brew install imagemagick
 brew install the_silver_searcher
-brew install vim
+brew install nvim
 brew install wget
 brew install youtube-dl
-```
-
-```shell
-brew cask install google-chrome
-brew cask install iterm2
-brew cask install postgres
-brew cask install postico
-brew cask install slack
-brew cask install visual-studio-code
 ```
 
 ```shell

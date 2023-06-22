@@ -1,6 +1,6 @@
-export ZSH=/Users/vnegrisolo/.oh-my-zsh
+export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
-plugins=()
+plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 file="$HOME/.sh_exports";  if [[ -s $file ]] ; then source $file ; fi
@@ -8,5 +8,5 @@ file="$HOME/.sh_aliases";  if [[ -s $file ]] ; then source $file ; fi
 file="$HOME/.zshrc.local"; if [[ -s $file ]] ; then source $file ; fi
 
 export ERL_AFLAGS="-kernel shell_history enabled"
-
-. /usr/local/opt/asdf/libexec/asdf.sh
+eval "$(/opt/homebrew/bin/brew shellenv)"
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
