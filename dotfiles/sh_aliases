@@ -51,14 +51,6 @@ alias be='bundle exec';
 alias berm='bundle exec rake db:migrate db:migrate:redo db:test:prepare'
 alias cuco='cucumber | egrep "^[Given|When|Then]" | pbcopy';
 
-asdf-update() {
-  asdf update
-  asdf plugin-update --all
-  (asdf current > /dev/null) 2>&1 | awk '{print $1;}' | while read -r i; do asdf list-all ${i} > ${i}.versions; done
-  asdf list
-  asdf current
-}
-
 gref() {
   command git --no-pager diff --cached --stat | command grep "|\s*0$" | awk '{system("command git reset " $1)}'
 }

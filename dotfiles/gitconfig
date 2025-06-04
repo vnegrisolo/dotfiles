@@ -8,6 +8,8 @@
   editor = vim
   whitespace = warn
   attributesfile = ~/.gitattributes
+[status]
+  showStash = true
 [color]
   diff = always
   status = auto
@@ -31,6 +33,7 @@
   template = ~/.git-commit
 [push]
   default = simple
+  autoSetupRemote = true
 [commit]
   verbose = true
 [pair "vnegrisolo"]
@@ -41,6 +44,8 @@
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
   required = true
+[diff]
+  renames = copies
 [diff "image"]
   textconv = imgcat
   command = imgdiff
