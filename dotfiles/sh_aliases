@@ -189,7 +189,8 @@ alias dls='
 alias vim-update='cd ~/.vim/bundle/; for i in *; do; echo -e "UPDATING => \033[0;36m${i}\033[0m"; cd $i; gpr; cd ..; done'
 alias vim-install='mkdir -p ~/.vim/bundle/; cd ~/.vim/bundle/; for i in $(cat ~/.vimbundle); do; if [[ ! -e ${i#*/} ]]; then; echo -e "INSTALLING => \033[0;36m${i}\033[0m"; $(git clone https://github.com/${i}.git); fi; done'
 
-alias code="/Applications/Visual\ Studio\ Code.app/Contents/MacOS/Electron . &"
+alias code="/Applications/Visual\ Studio\ Code.app/Contents/MacOS/Electron"
+alias cursor="/Applications/Cursor.app/Contents/MacOS/Cursor"
 
 alias chrome='open -a "Google Chrome"'
 alias t='task'
@@ -220,3 +221,5 @@ img-compare(){
   echo "[IMAGE COMPARE] different";
   return -1;
 }
+alias mr="mise run"
+alias mw="mise watch"
