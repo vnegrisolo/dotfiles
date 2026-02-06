@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+#MISE dir="{{cwd}}"
+#MISE description="Clear temporary files and caches"
+set -xeuo pipefail
+
+[ -f ".env" ] && source .env;
+
+run() {
+  if [[ -f "mix.exs" ]]; then
+    rm -rf deps/ _build/ .elixir_ls/
+    [[ -d "assets/" ]] && (cd assets && run)
+  fi
+
+  if [[ -f "Gemfile" ]]; then
+    rm -rf .ruby-lsp/ log/* tmp/
+  fi
+
+  if [[ -f "package.json" ]]; then
+    rm -rf node_modules/ ios/ android/
+  fi
+}
+
+run

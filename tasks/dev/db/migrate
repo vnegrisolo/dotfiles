@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+#MISE dir="{{cwd}}"
+#MISE description="Run database migrations"
+set -xeuo pipefail
+
+[ -f ".env" ] && source .env;
+
+run() {
+  if [[ -f "mix.exs" ]]; then
+    mix do ecto.migrate + ecto.dump
+    MIX_ENV=test mix ecto.migrate
+  fi
+
+  if [[ -f "Gemfile" ]]; then
+    bundle exec rails db:migrate
+  fi
+}
+
+run

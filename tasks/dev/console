@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+#MISE dir="{{cwd}}"
+#MISE description="Start interactive console"
+set -xeuo pipefail
+
+[ -f ".env" ] && source .env;
+
+run() {
+  if [[ -f "mix.exs" ]]; then
+    iex -S mix
+  fi
+
+  if [[ -f "Gemfile" ]]; then
+    bundle exec rails console
+  fi
+}
+
+run

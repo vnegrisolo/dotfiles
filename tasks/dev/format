@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+#MISE dir="{{cwd}}"
+#MISE description="Format code"
+set -xeuo pipefail
+
+[ -f ".env" ] && source .env;
+
+run() {
+  if [[ -f "mix.exs" ]]; then
+    mix format
+    [[ -d "assets/" ]] && (cd assets && run)
+  fi
+
+  if [[ -f "Gemfile" ]]; then
+    bundle exec standardrb --fix
+  fi
+
+  if [[ -f "package.json" ]]; then
+    if [[ -f ".prettierrc" ]] || [[ -f ".prettierrc.json" ]] || [[ -f "prettier.config.js" ]]; then
+      npx prettier --write .
+    fi
+
+    if [[ -f "eslint.config.mts" ]] || [[ -f ".eslintrc.cjs" ]]; then
+      npx eslint --fix .
+    fi
+
+    if [[ -f "tsconfig.json" ]]; then
+      npx tsc
+    fi
+  fi
+}
+
+run

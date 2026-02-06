@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+#MISE dir="{{cwd}}"
+#MISE description="Run test suite"
+set -xeuo pipefail
+
+[ -f ".env" ] && source .env;
+
+run() {
+  if [[ -f "mix.exs" ]]; then
+    mix compile --warnings-as-errors
+    mix test --trace
+    [[ -d "assets/" ]] && (cd assets && run)
+    if grep -q "credo" mix.exs 2>/dev/null; then
+      mix credo --strict
+    fi
+    if grep -q "dialyxir" mix.exs 2>/dev/null; then
+      mix dialyzer
+    fi
+    if grep -q "sobelow" mix.exs 2>/dev/null; then
+      mix sobelow -i Config.HTTPS,RCE.EEx --exit
+    fi
+  fi
+
+  if [[ -f "Gemfile" ]]; then
+    bundle exec rspec
+  fi
+
+  if [[ -f "package.json" ]]; then
+    if grep -q "jest" package.json 2>/dev/null; then
+      npx jest
+    fi
+  fi
+}
+
+run

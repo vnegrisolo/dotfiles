@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+#MISE dir="{{cwd}}"
+#MISE description="Install dependencies"
+set -xeuo pipefail
+
+[ -f ".env" ] && source .env;
+
+run() {
+  if [[ -f "mix.exs" ]]; then
+    mix local.hex --force
+    [[ -d "assets/" ]] && (cd assets && run)
+    mix do deps.unlock --unused + setup
+    MIX_ENV=test mix setup
+    mix gettext.extract --merge --no-fuzzy
+    mix usage_rules.sync AGENTS.md --all --inline usage_rules:all --link-to-folder deps
+  fi
+
+  if [[ -f "Gemfile" ]]; then
+    bundle install
+  fi
+
+  if [[ -f "package.json" ]]; then
+    npm install
+  fi
+}
+
+run

@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+#MISE dir="{{cwd}}"
+#MISE description="Start development server"
+set -xeuo pipefail
+
+[ -f ".env" ] && source .env;
+
+run() {
+  if [[ -f "mix.exs" ]]; then
+    if grep -q "phoenix" mix.exs 2>/dev/null; then
+      mix assets.build
+      iex -S mix phx.server
+    else
+      iex -S mix
+    fi
+  fi
+
+  if [[ -f "Gemfile" ]]; then
+    bundle exec rails server
+  fi
+
+  if [[ -f "package.json" ]]; then
+    npm start
+  fi
+}
+
+run

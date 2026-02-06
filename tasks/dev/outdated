@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+#MISE dir="{{cwd}}"
+#MISE description="Check for outdated dependencies"
+set -xeuo pipefail
+
+[ -f ".env" ] && source .env;
+
+run() {
+  if [[ -f "mix.exs" ]]; then
+    mix hex.outdated
+    [[ -d "assets/" ]] && (cd assets && run)
+  fi
+
+  if [[ -f "Gemfile" ]]; then
+    bundle outdated
+  fi
+
+  if [[ -f "package.json" ]]; then
+    npm outdated
+  fi
+}
+
+run

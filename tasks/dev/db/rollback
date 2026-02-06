@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+#MISE dir="{{cwd}}"
+#MISE description="Run database rollback"
+set -xeuo pipefail
+
+[ -f ".env" ] && source .env;
+
+run() {
+  if [[ -f "mix.exs" ]]; then
+    mix do ecto.rollback + ecto.dump
+    MIX_ENV=test mix ecto.rollback
+  fi
+
+  if [[ -f "Gemfile" ]]; then
+    bundle exec rails db:rollback
+  fi
+}
+
+run

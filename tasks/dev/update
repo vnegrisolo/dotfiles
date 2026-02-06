@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+#MISE dir="{{cwd}}"
+#MISE description="Update dependencies"
+set -xeuo pipefail
+
+[ -f ".env" ] && source .env;
+
+run() {
+  if [[ -f "mix.exs" ]]; then
+    mix deps.update --all
+    mix tailwind.install
+    [[ -d "assets/" ]] && (cd assets && run)
+  fi
+
+  if [[ -f "Gemfile" ]]; then
+    bundle update
+  fi
+
+  if [[ -f "package.json" ]]; then
+    npm update
+  fi
+}
+
+run
