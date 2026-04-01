@@ -11,4 +11,4 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 export PATH=/Applications/Android\ Studio.app/Contents/jbr/Contents/Home/bin:$PATH
-eval "$(/Users/vnegrisolo/.local/bin/mise activate zsh)"
+eval "$($HOME/.local/bin/mise activate zsh)"

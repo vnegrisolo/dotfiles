@@ -1,55 +1,23 @@
 alias l='ls -lah';
+
 l.() {
   ls -ld "${1:-$PWD}"/.[^.]*
 }
+
 log() {
   echo -e "\033[36m${1} \033[0m=> ${2}";
 }
+
 log_error() {
   echo -e "\033[31m[ERROR] \033[0m=> ${1}";
 }
+
 alias grep='grep --color';
 alias clear='clear && printf "\e[3J"';
 alias open_file_system_to_web='ifconfig | grep 192.168; python -m SimpleHTTPServer 8998;';
-alias versions_db='
-  log initdb "$(initdb --version)";
-  log psql "$(psql --version)";
-  log postgres "$(postgres --version)";
-';
-alias versions_git='
-  log git "$(git --version)";
-';
-alias versions_js='
-  log node "$(node -v)";
-  log npm "$(npm -v)";
-';
-alias versions_ruby='
-  log ruby "$(ruby -v)";
-  log gem "$(gem -v)";
-  log bundle "$(bundler -v)";
-  log rake "$(rake --version)";
-  log rails "$(rails -v)";
-';
-alias versions_elixir='
-  log erl "$(erl -version)";
-  log iex "$(iex --version)";
-  log mix "$(mix --version)";
-  log elixir "$(elixir -v)";
-  log phoenix "$(mix phx.new -v)";
-';
+
 alias mt='mix test --trace';
 alias mf='mix format';
-alias versions='
-  versions_db
-  versions_git
-  versions_js
-  versions_ruby
-  versions_elixir
-';
-
-alias be='bundle exec';
-alias berm='bundle exec rake db:migrate db:migrate:redo db:test:prepare'
-alias cuco='cucumber | egrep "^[Given|When|Then]" | pbcopy';
 
 gref() {
   command git --no-pager diff --cached --stat | command grep "|\s*0$" | awk '{system("command git reset " $1)}'
@@ -101,6 +69,7 @@ gstatistics() {
     git log --no-merges --author="$author" --after="$after" --before="$before" --pretty=tformat: --numstat | awk '{inserted+=$1; deleted+=$2;} END {printf "  Added:   %7s\n  Removed: %7s\n", inserted, deleted }'
   done
 }
+
 gfix() {
   if (($# < 1)); then
     log_error "Usage:\n";
@@ -130,26 +99,6 @@ print_all_colors() {
   done
 }
 
-sshhr() {
-  if (($# < 1)); then
-    log_error "Usage:\n";
-    echo "  $0 <host> [port1] [port2] ...";
-    return 0;
-  fi
-
-  host=$1;
-  shift;
-
-  ports=("5900" "$@");
-  fwd_ports=""
-  for port in "$ports[@]"; do
-    fwd_ports="-L ${port}:localhost:${port} ${fwd_ports}"
-  done
-
-  (sleep 3 && open vnc://dev@localhost:5900) &;
-  eval "ssh ${fwd_ports}${host}";
-}
-
 alias gap='git add -p'
 alias gnap='git add -N --ignore-removal . && gap && gref'
 alias gb='git branch'
@@ -169,57 +118,13 @@ alias reset-authors='git commit --amend --reset-author -C HEAD'
 alias gcf='(gd --name-only; gdc --name-only; gd --name-only ..main; git ls-files --others --exclude-standard) | sort -u'
 alias gcfd='(gd --name-only; gdc --name-only; gd --name-only ..develop; git ls-files --others --exclude-standard) | sort -u'
 
+alias cdp="cd ~/vfn/projects/"
 alias cdv="cd ~/vfn/projects/vnegrisolo/"
-alias cdh="cd ~/vfn/projects/hashrocket/"
 
-alias dps='docker ps'
-alias dclear='docker rm $(docker ps -a -q) && docker rmi $(docker images -q) && docker volume rm $(docker volume ls -q)'
-alias dlsn='echo -e "#=> \033[33mNETWORK\033[0m\n`docker network ls`"'
-alias dlsv='echo -e "#=> \033[33mVOLUMES\033[0m\n`docker volume ls`"'
-alias dlsi='echo -e "#=> \033[33mIMAGES\033[0m\n`docker images -a`"'
-alias dlsc='echo -e "#=> \033[33mCONTAINERS\033[0m\n`docker ps -a`"'
-alias dls='
-  dlsm
-  dlsn
-  dlsv
-  dlsi
-  dlsc
-'
-
-alias vim-update='cd ~/.vim/bundle/; for i in *; do; echo -e "UPDATING => \033[0;36m${i}\033[0m"; cd $i; gpr; cd ..; done'
-alias vim-install='mkdir -p ~/.vim/bundle/; cd ~/.vim/bundle/; for i in $(cat ~/.vimbundle); do; if [[ ! -e ${i#*/} ]]; then; echo -e "INSTALLING => \033[0;36m${i}\033[0m"; $(git clone https://github.com/${i}.git); fi; done'
-
-alias code="/Applications/Visual\ Studio\ Code.app/Contents/MacOS/Electron"
 alias cursor="/Applications/Cursor.app/Contents/MacOS/Cursor"
 
 alias chrome='open -a "Google Chrome"'
 alias t='task'
 
-pdf_listen() {
-  f=/tmp/pdf_listen.txt
-  pdftotext $1 $f
-  say -f $f
-}
-
-img-compare(){
-  img1="$1";
-  img2="$2";
-  value=`compare -metric phash $img1 $img2 null: 2>&1`;
-
-  imgdiff "$img2" "$img1"
-
-  if [[ $(bc <<< "$value <= 0.0") -eq 1 ]]; then
-    echo "[IMAGE COMPARE] same"
-    return 0;
-  else
-    if [[ $(bc <<< "$value <= 20.0") -eq 1 ]]; then
-      echo "[IMAGE COMPARE] similar"
-      return 1;
-    fi
-  fi
-
-  echo "[IMAGE COMPARE] different";
-  return -1;
-}
 alias mr="mise run"
 alias mw="mise watch"
