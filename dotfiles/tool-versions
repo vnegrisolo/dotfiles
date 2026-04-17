@@ -1,4 +1,5 @@
 elixir 1.19.5-otp-28
 erlang 28.4.2
-ruby 4.0.0
 nodejs 24.15.0
+ruby 4.0.0
+task 3.50.0

@@ -12,3 +12,5 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 export PATH=/Applications/Android\ Studio.app/Contents/jbr/Contents/Home/bin:$PATH
 eval "$($HOME/.local/bin/mise activate zsh)"
+
+eval "$(task --completion zsh)"
