@@ -5,3 +5,5 @@ todo-vfn.md
 Procfile.vfn.*
 .elixir_ls/
 vfn-git-ignored/
+
+**/.claude/settings.local.json

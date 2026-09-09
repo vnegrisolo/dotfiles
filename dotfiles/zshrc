@@ -14,3 +14,10 @@ export PATH=/Applications/Android\ Studio.app/Contents/jbr/Contents/Home/bin:$PA
 eval "$($HOME/.local/bin/mise activate zsh)"
 
 eval "$(task --completion zsh)"
+
+# bun completions
+[ -s "/Users/vnegrisolo/.bun/_bun" ] && source "/Users/vnegrisolo/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
